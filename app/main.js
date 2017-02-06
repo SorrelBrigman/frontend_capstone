@@ -7,3 +7,5 @@ $('.collapsible').collapsible();
 $(".button-collapse").sideNav();
 //initialize parrallax
 $('.parallax').parallax();
+//initialize select
+$('select').material_select();
