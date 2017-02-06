@@ -14,12 +14,12 @@ module.exports = (grunt)=> {
             }
         }
     },
-    watch: {
+      watch: {
       scripts: {
         files: ['**/*.scss'],
         tasks: ['sass'],
 
-      },
+      }
     }
   });
 
@@ -31,8 +31,9 @@ module.exports = (grunt)=> {
 
 
 
+
   // Default task(s).
   //declare what taskes we want to run
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('default', ['sass', 'watch']);
 
 };
