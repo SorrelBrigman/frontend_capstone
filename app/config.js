@@ -1,8 +1,10 @@
+console.log("hello")
+
 //assign the angular module to the var app
-var app = angular.module("forUsByUSApp", ['ng-route'])
+var app = angular.module("forUsByUSApp", ['ngRoute'])
 
 //configure "app" with routeProvider
-app.config($routeProvider, ()=>{
+app.config(($routeProvider)=> {
   $routeProvider
     //when at the base page
     .when("/", {
@@ -11,4 +13,7 @@ app.config($routeProvider, ()=>{
       //use the partial "home"
       templateUrl : "partials/home.html"
     })
+})
+.controller('homeCtrl',  function(){
+
 })

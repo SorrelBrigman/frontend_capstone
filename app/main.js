@@ -5,3 +5,5 @@
 $('.collapsible').collapsible();
 // Initialize collapse button for navbar, per materialize
 $(".button-collapse").sideNav();
+//initialize parrallax
+$('.parallax').parallax();
