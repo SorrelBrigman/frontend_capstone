@@ -13,7 +13,16 @@ app.config(($routeProvider)=> {
       //use the partial "home"
       templateUrl : "partials/home.html"
     })
+    .when("/addproduct", {
+      // use the add product ctrl
+      controller: "addProductCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/addProduct.html"
+    })
 })
 .controller('homeCtrl',  function(){
+
+})
+.controller('addProductCtrl', function() {
 
 })
