@@ -1,20 +1,38 @@
-require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+//a node thing:
+module.exports = (grunt)=> {
 
-
-//Project configuration
-grunt.initConfig({
+  // Project configuration.
+  grunt.initConfig({
     sass: {
         options: {
-            sourceMap: true
+            sourceMap: true,
+            outputStyle: 'compressed',
         },
         dist: {
             files: {
-                'main.css': 'main.scss'
+                'styles/main.css': 'styles/main.scss'
             }
         }
+    },
+    watch: {
+      scripts: {
+        files: ['**/*.scss'],
+        tasks: ['sass'],
+
+      },
     }
-});
+  });
 
 
-//default task is sass
-grunt.registerTask('default', ['sass']);
+  // Load the grunt plugins
+  //what tasks we want to load
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+
+
+  // Default task(s).
+  //declare what taskes we want to run
+  grunt.registerTask('default', ['sass']);
+
+};
