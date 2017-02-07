@@ -47,6 +47,7 @@ app.config(($routeProvider)=> {
     image: '',
     descript: '',
     price: '',
+    category: ''
   };
 
  $scope.addProduct = ()=> {
