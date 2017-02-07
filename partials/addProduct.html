@@ -30,38 +30,46 @@
       </div>
       <div class="row">
         <div class="col s12">
-          This is an inline input field:
+          Current price of item:
           <div class="input-field inline">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
+            <input id="price" type="text" class="validate">
+            <label for="price" data-error="wrong" data-success="right">$</label>
           </div>
         </div>
       </div>
       <div class="row">
           <div class="input-field col s12">
-            <select>
-              <option value="" disabled selected>Choose your option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <select class="browser-default">
+              <option value="0" selected>Select Product Category</option>
+              <option value="1">Home</option>
+              <option value="2">Clothing</option>
+              <option value="3">Food</option>
+              <option value="4">Other</option>
             </select>
-            <label>Materialize Select</label>
+            <!-- <label>Select Product Category</label> -->
          </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <p>
-              <input type="checkbox" id="test1"/>
-              <label for="test1">This product is made by an United States Company</label>
+              <input type="checkbox" id="companyUS" />
+              <label for="companyUS">This product is made by an United States Company</label>
             </p>
             <p>
-              <input type="checkbox" id="test2"/>
-              <label for="test2">This product is assembled in the United States</label>
+              <input type="checkbox" id="assembledUS" />
+              <label for="assembledUS">This product is assembled in the United States</label>
             </p>
             <p>
-              <input type="checkbox" id="test3"/>
-              <label for="test3">This product is manufacture in the United States</label>
+              <input type="checkbox" id="manufacturedUS" />
+              <label for="manufacturedUS">This product is manufactured in the United States</label>
             </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
           </div>
         </div>
       </div>
