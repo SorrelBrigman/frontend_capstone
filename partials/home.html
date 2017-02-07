@@ -13,7 +13,7 @@
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
-          <input id="search" type="search">
+          <input id="search" type="search" ng-model="productSearch">
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -35,9 +35,9 @@
 <div class="cardContainer">
 
   <div class="row">
-      <div class="col s12 m6" ng-repeat="product in listAll">
+      <div class="col s12 m6" ng-repeat="product in listAll | filter: productSearch">
 
-        <div class="card" >
+        <div class="card {{product.category}}" >
           <p class="price">${{product.price}}</p>
           <div class="card-image">
               <a href="#">
