@@ -19,6 +19,7 @@
     "materialize": "^0.98.0",
     "angular": "^1.6.1",
     "angular-route": "^1.6.1",
-    "jQuery": "^3.1.1"
+    "jQuery": "^3.1.1",
+    "firebase": "^3.6.8"
   }
 }
