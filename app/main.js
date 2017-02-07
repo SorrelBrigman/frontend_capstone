@@ -9,3 +9,5 @@ $(".button-collapse").sideNav();
 $('.parallax').parallax();
 //initialize select
 $('select').material_select();
+//initialize modals
+$('.modal').modal();
