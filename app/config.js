@@ -35,7 +35,11 @@ app.config(($routeProvider)=> {
     });
 })
 .controller('homeCtrl',  function($scope, getProductFactory){
-  getProductFactory.getAllProducts();
+   getProductFactory.getAllProducts()
+   .then((e)=>{
+    $scope.listAll =  e;
+   });
+  console.log("return from factory", $scope.listAll);
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {

@@ -35,18 +35,18 @@
 <div class="cardContainer">
 
   <div class="row">
-      <div class="col s12 m6">
+      <div class="col s12 m6" ng-repeat="product in listAll">
 
-        <div class="card">
-          <p class="price">Price</p>
+        <div class="card" >
+          <p class="price">${{product.price}}</p>
           <div class="card-image">
               <a href="#">
-              <img src="http://i.imgur.com/SUSCJXf.jpg">
+              <img src={{product.image}}>
               </a>
           </div>
           <div class="card-content">
-            <span class="card-title">Card Title</span>
-            <p><a href="#">Company</a></p>
+            <span class="card-title">{{product.name}}</span>
+            <p><a href={{product.compWeb}}>{{product.company}}</a></p>
           </div>
           <div class="card-action">
             <a href="#">Flag as X</a>
