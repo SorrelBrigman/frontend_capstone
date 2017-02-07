@@ -32,14 +32,23 @@ app.config(($routeProvider)=> {
       controller: "addProductCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/addProduct.html"
+    })
+    .when("/products/:productCat", {
+      // use the add product ctrl
+      controller: "homeCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/home.html"
     });
 })
-.controller('homeCtrl',  function($scope, getProductFactory){
+.controller('homeCtrl',  function($scope, getProductFactory, $routeParams){
    getProductFactory.getAllProducts()
    .then((e)=>{
     $scope.listAll =  e;
    });
   console.log("return from factory", $scope.listAll);
+
+  $scope.limitCat = $routeParams.productCat;
+  console.log("limitCat", $scope.limitCat);
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {

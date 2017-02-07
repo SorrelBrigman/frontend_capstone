@@ -21,10 +21,10 @@
       <!--select which category of products to look at-->
       <div class="nav-content">
         <ul class="tabs">
-          <li class="tab"><a href="/products/all">All</a></li>
-          <li class="tab"><a href="/products/home">Home</a></li>
-          <li class="tab"><a href="/products/clothing">Clothing</a></li>
-          <li class="tab"><a class="active" href="/products/food">Food</a></li>
+          <li class="tab"><a href="#!">All</a></li>
+          <li class="tab"><a href="#!/products/home">Home</a></li>
+          <li class="tab"><a href="#!/products/clothing">Clothing</a></li>
+          <li class="tab"><a class="active" href="#!/products/food">Food</a></li>
         </ul>
       </div>
     </div>
@@ -35,7 +35,7 @@
 <div class="cardContainer">
 
   <div class="row">
-      <div class="col s12 m6" ng-repeat="product in listAll | filter: productSearch">
+      <div class="col s12 m6" ng-repeat="product in listAll | filter: productSearch | filter: limitCat">
 
         <div class="card {{product.category}}" >
           <p class="price">${{product.price}}</p>
