@@ -34,7 +34,8 @@ app.config(($routeProvider)=> {
       templateUrl: "partials/addProduct.html"
     });
 })
-.controller('homeCtrl',  function(){
+.controller('homeCtrl',  function($scope, getProductFactory){
+  getProductFactory.getAllProducts();
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {
@@ -57,6 +58,7 @@ app.config(($routeProvider)=> {
     console.log("logging product");
     console.log($scope.product);
     addProductFactory.addProductToFirebase($scope.product);
+    //function to reset form
   };
 
 })
@@ -73,4 +75,30 @@ app.config(($routeProvider)=> {
     }
   };
 
+})
+.factory('getProductFactory', function($http){
+  return {
+    getAllProducts : () => {
+      //get all the products from firebase
+      return $http
+      .get('https://skb-capstone-frontend.firebaseio.com/products.json')
+      //parse the return from firebase, just returning the data object
+      .then((e)=>{
+        console.log("from get factory .data", e.data);
+        return e.data;
+      })
+      //turn the data object into an array
+      .then((e)=>{
+        let productList = e;
+        let allProducts = [];
+        for (var key in productList) {
+          let myProduct = productList[key];
+          myProduct.key = key;
+          allProducts.push(myProduct);
+        }
+        console.log("allProducts", allProducts);
+        return allProducts;
+      });
+    }
+  };
 });
