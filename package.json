@@ -19,10 +19,12 @@
   "homepage": "https://github.com/SorrelBrigman/frontend_capstone#readme",
   "dependencies": {
     "jslint": "^0.10.3",
+    "matchdep": "^1.0.1",
     "node-sass": "^4.5.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-sass": "^2.0.0"
   }

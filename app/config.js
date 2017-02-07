@@ -1,4 +1,4 @@
-console.log("hello")
+console.log("hello");
 
 // Initialize Firebase
 var config = {
@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 
 
 //assign the angular module to the var app
-var app = angular.module("forUsByUSApp", ['ngRoute'])
+var app = angular.module("forUsByUSApp", ['ngRoute']);
 
 //configure "app" with routeProvider
 app.config(($routeProvider)=> {
@@ -32,12 +32,12 @@ app.config(($routeProvider)=> {
       controller: "addProductCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/addProduct.html"
-    })
+    });
 })
 .controller('homeCtrl',  function(){
 
 })
-.controller('addProductCtrl', function($scope) {
+.controller('addProductCtrl', function($scope, addProductFactory) {
 
   $scope.product = {
     name: '',
@@ -47,14 +47,26 @@ app.config(($routeProvider)=> {
     image: '',
     descript: '',
     price: '',
-  }
+  };
+
  $scope.addProduct = ()=> {
-    console.log("logging product")
-    console.log($scope.product)
-  }
+    console.log("logging product");
+    console.log($scope.product);
+    addProductFactory.addProductToFirebase($scope.product);
+  };
 
 })
-.factory('addProductFactory', function(){
-  return {}
+.factory('addProductFactory', function($http){
+  return {
+    addProductToFirebase : (newProduct)=> {
+      let myNewProduct = newProduct;
+      return $http
+        .post('https://skb-capstone-frontend.firebaseio.com/products.json', myNewProduct)
+        .then((e)=>{
+          console.log("e from send", e);
+        });
 
-})
+    }
+  };
+
+});
