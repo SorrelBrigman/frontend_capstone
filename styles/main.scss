@@ -1,4 +1,4 @@
-
+/**flex attributes to keep footer at bottom **/
 body {
   display: flex;
   min-height: 100vh;
@@ -9,11 +9,13 @@ main {
   flex: 1 0 auto;
 }
 
-
+/**Nav Bar*/
 
 .navArea {
   margin-bottom: 10%;
 }
+
+/*****Home Page Styling****/
 
 .welcomeBanner {
   text-align: center;
@@ -23,6 +25,8 @@ main {
   margin-bottom: 10%;
 }
 
+
+/*******Home Page Product Card Styling*************/
 .cardContainer {
   border-top: 2px solid black;
 }
@@ -41,6 +45,12 @@ main {
 .votes {
   text-align: right;
 }
+
+.card:hover {
+ /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 3px 3px 7px gray;
+}
+
 
 
 /********
