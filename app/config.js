@@ -104,6 +104,7 @@ app.config(($routeProvider)=> {
       console.log("SCOPE", currentProduct);
       let user = e;
       votingFactory.upVote(user, currentProduct);
+      $(".upVotes").hide();
     });
   };
 
