@@ -38,9 +38,15 @@ app.config(($routeProvider)=> {
       controller: "homeCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/home.html"
+    })
+    .when("/details/:productID", {
+      // use the add product ctrl
+      controller: "detailCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/home.html"
     });
 })
-.controller('homeCtrl',  function($scope, getProductFactory, $routeParams){
+.controller('homeCtrl',  function($scope, getProductFactory, $routeParams, $location){
    getProductFactory.getAllProducts()
    .then((e)=>{
     $scope.listAll =  e;
@@ -49,6 +55,51 @@ app.config(($routeProvider)=> {
 
   $scope.limitCat = $routeParams.productCat;
   console.log("limitCat", $scope.limitCat);
+
+  $scope.openModule = (value)=> {
+    console.log("clicked");
+    let whichProduct = value;
+    $location.url(`/details/${whichProduct}`);
+    // //initialize modals
+    //   $('.modal').modal();
+    //   //open the modal
+    //  $("#modal1").modal('open');
+  };
+
+})
+.controller('detailCtrl',  function($scope, getProductFactory, $routeParams){
+   getProductFactory.getAllProducts()
+   .then((e)=>{
+    $scope.listAll =  e;
+    return $scope.listAll;
+   })
+   .then((e)=>{
+    let currentProduct = $routeParams.productID;
+    console.log("specific", e.currentProduct);
+      //activates the modal on the dynamically created content
+      $('.modal').modal();
+      //open the modal
+      $("#modal1").modal('open');
+   });
+  console.log("return from factory", $scope.listAll);
+
+
+  // //activates the modal on the dynamically created content
+  // $('.modal').modal();
+  //     //open the modal
+  // $("#modal1").modal('open');
+
+
+  let currentProduct = $routeParams.productID;
+  console.log("specific", $scope.listAll.currentProduct);
+
+  $scope.openModule = (value)=> {
+    console.log("clicked");
+    //initialize modals
+      $('.modal').modal();
+      //open the modal
+     $("#modal1").modal('open');
+  };
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {
