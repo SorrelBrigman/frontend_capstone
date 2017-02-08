@@ -118,60 +118,54 @@ app.config(($routeProvider)=> {
   };
 
 })
-.controller('loginCtrl', function($scope){
+.controller('loginCtrl', function($scope, $location){
   $scope.logIn = () => {
-    Materialize.toast("logging in", 4000, 'round right');
+    //take the values from the form
     let email = $scope.email;
     let password = $scope.password;
-    console.log("email password", email, password);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((e)=>{
-        console.log("logging in");
-        Materialize.toast(e.message, 4000, 'round right');
-        //$location.url("/");
+        //after logging in, take them to the home page
+        $location.url("/");
       })
       .catch((e)=>{
-        console.log("login error", e)
         // Materialize.toast(message, displayLength, className, completeCallback);
       Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
 
       });
   };
   $scope.regUser = () => {
-    Materialize.toast("reg new user", 4000, 'round right');
+    //take the values from the form
     let email = $scope.email;
     let password = $scope.password;
-    console.log("email password", email, password);
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(()=>{
-        console.log("new user!");
+        //after creating a user account (which automatically signs them in),
+        //take the user to the home page
         $location.url("/");
       })
       .catch((e)=>{
         console.log("reg error", e)
         // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
+        Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
 
       });
   };
   $scope.forgot = () =>{
-    Materialize.toast("Did you forget?", 4000, 'round right');
     let email = $scope.email;
     firebase
       .auth()
       .sendPasswordResetEmail(email)
       .then(()=>{
-        console.log("You forgot! inside then");
         Materialize.toast(`An message has been sent to ${email}.`, 4000, 'round right');
       })
      .catch((e)=>{
-      console.log("the error", e);
         // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
+        Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
     });
   };
 
