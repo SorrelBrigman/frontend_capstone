@@ -25,7 +25,10 @@ logOut = () => {
     .auth()
     .signOut()
     .then(()=>{
-      location.href="/";
+      debugger
+      console.log("logged out");
+      location.href="/#!/login";
+      debugger
     })
     .catch((e)=>{
       // Materialize.toast(message, displayLength, className, completeCallback);
