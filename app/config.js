@@ -80,7 +80,7 @@ app.config(($routeProvider)=> {
   };
 
 })
-.controller('detailCtrl',  function($scope, getProductFactory, $routeParams){
+.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, authFactory, votingFactory){
   let currentProduct = $routeParams.productID;
     console.log("specific", currentProduct);
    getProductFactory.getThisProduct(currentProduct)
@@ -97,8 +97,15 @@ app.config(($routeProvider)=> {
       $("#modal1").modal('open');
    });
 
-
-
+   $scope.upVote = () => {
+    authFactory.getUser()
+    .then((e) => {
+      console.log("I've been voted!");
+      console.log("SCOPE", currentProduct);
+      let user = e;
+      votingFactory.upVote(user, currentProduct);
+    });
+  };
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {
@@ -255,6 +262,19 @@ app.config(($routeProvider)=> {
           }
         });
       });
+    }
+  };
+})
+.factory('votingFactory', function($http) {
+  return {
+    upVote : (user, product) => {
+      let thisProduct = product;
+      let myVote = user.uid;
+      console.log("product", thisProduct);
+      console.log("user", myVote);
+      return $http
+      //an array of users, for each vote (limit by the users in the card)
+        .post(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/votes/.json`, JSON.stringify(myVote));
     }
   };
 });
