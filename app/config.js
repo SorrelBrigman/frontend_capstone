@@ -31,7 +31,14 @@ app.config(($routeProvider)=> {
       // use the add product ctrl
       controller: "addProductCtrl",
       //use the partial "addProduct"
-      templateUrl: "partials/addProduct.html"
+      templateUrl: "partials/addProduct.html",
+      resolve: {
+        user: (authFactory, $location) => {
+          return authFactory.getUser().catch(()=>{
+            $location.url("/login");
+          });
+        }
+      }
     })
     .when("/products/:productCat", {
       // use the add product ctrl
@@ -118,17 +125,19 @@ app.config(($routeProvider)=> {
   };
 
 })
-.controller('loginCtrl', function($scope, $location){
+.controller('loginCtrl', function($scope, $location, $q){
   $scope.logIn = () => {
     //take the values from the form
     let email = $scope.email;
     let password = $scope.password;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
+    //turn the firebase call into an angular promise
+    return $q.resolve(firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password))
       .then((e)=>{
         //after logging in, take them to the home page
         $location.url("/");
+        // $scope.$apply();
       })
       .catch((e)=>{
         // Materialize.toast(message, displayLength, className, completeCallback);
@@ -140,16 +149,21 @@ app.config(($routeProvider)=> {
     //take the values from the form
     let email = $scope.email;
     let password = $scope.password;
-    firebase
+    //if there is no password, remind user to input one
+    if (password === undefined) {
+      Materialize.toast("A password is required", 4000);
+    }
+    //convert firebase.auth() into an angular promise
+    return $q.resolve(firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password))
       .then(()=>{
         //after creating a user account (which automatically signs them in),
         //take the user to the home page
         $location.url("/");
       })
       .catch((e)=>{
-        console.log("reg error", e)
+        console.log("reg error", e);
         // Materialize.toast(message, displayLength, className, completeCallback);
         Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
 
@@ -157,15 +171,18 @@ app.config(($routeProvider)=> {
   };
   $scope.forgot = () =>{
     let email = $scope.email;
-    firebase
+    //convert firebase.auth() into an angular promise
+    return $q.resolve(firebase
       .auth()
-      .sendPasswordResetEmail(email)
-      .then(()=>{
+      .sendPasswordResetEmail(email))
+      .then((e)=>{
+        console.log(e);
         Materialize.toast(`An message has been sent to ${email}.`, 4000, 'round right');
       })
-     .catch((e)=>{
+     .catch((e)=> {
+      console.log(e);
         // Materialize.toast(message, displayLength, className, completeCallback);
-        Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
+        Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
     });
   };
 
@@ -218,6 +235,25 @@ app.config(($routeProvider)=> {
       .then((e)=>{
         console.log("specific product object", e.data);
         return e.data;
+      });
+    }
+  };
+})
+.factory('authFactory', function($q) {
+  return {
+    login: (e,p)=> {
+      return $q.resolve(firebase.auth().signInWithEmailAndPassword(e,p));
+    },
+    getUser: ()=> {
+      return $q((resolve, reject)=>{
+        const unsubscribe = firebase.auth().onAuthStateChanged(user=>{
+          unsubscribe();
+          if (user) {
+            resolve(user);
+          } else {
+            reject();
+          }
+        });
       });
     }
   };

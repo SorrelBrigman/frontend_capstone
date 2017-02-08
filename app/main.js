@@ -25,13 +25,11 @@ logOut = () => {
     .auth()
     .signOut()
     .then(()=>{
-      debugger
       console.log("logged out");
       location.href="/#!/login";
-      debugger
     })
     .catch((e)=>{
       // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast(e, 4000); // 4000 is the duration of the toast
+      Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
     });
-}
+};
