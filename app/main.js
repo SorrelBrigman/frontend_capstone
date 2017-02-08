@@ -9,3 +9,26 @@ $(".button-collapse").sideNav();
 $('.parallax').parallax();
 //initialize select
 $('select').material_select();
+
+
+// Add mobile navbar functionality
+$(".button-collapse").sideNav({
+  closeOnClick: true, // Closes side-nav on <a> clicks, useful for
+  draggable: true // Choose whether you can drag to open on touch screens
+});
+
+
+
+//logout function
+logOut = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(()=>{
+      location.href="/";
+    })
+    .catch((e)=>{
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast(e, 4000); // 4000 is the duration of the toast
+    });
+}

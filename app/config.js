@@ -44,6 +44,12 @@ app.config(($routeProvider)=> {
       controller: "detailCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/home.html"
+    })
+    .when("/login", {
+      // use the add product ctrl
+      controller: "loginCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/login.html"
     });
 })
 .controller('homeCtrl',  function($scope, getProductFactory, $routeParams, $location){
@@ -109,6 +115,64 @@ app.config(($routeProvider)=> {
     console.log($scope.product);
     addProductFactory.addProductToFirebase($scope.product);
     //function to reset form
+  };
+
+})
+.controller('loginCtrl', function($scope){
+  $scope.logIn = () => {
+    Materialize.toast("logging in", 4000, 'round right');
+    let email = $scope.email;
+    let password = $scope.password;
+    console.log("email password", email, password);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((e)=>{
+        console.log("logging in");
+        Materialize.toast(e.message, 4000, 'round right');
+        //$location.url("/");
+      })
+      .catch((e)=>{
+        console.log("login error", e)
+        // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
+
+      });
+  };
+  $scope.regUser = () => {
+    Materialize.toast("reg new user", 4000, 'round right');
+    let email = $scope.email;
+    let password = $scope.password;
+    console.log("email password", email, password);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(()=>{
+        console.log("new user!");
+        $location.url("/");
+      })
+      .catch((e)=>{
+        console.log("reg error", e)
+        // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
+
+      });
+  };
+  $scope.forgot = () =>{
+    Materialize.toast("Did you forget?", 4000, 'round right');
+    let email = $scope.email;
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(()=>{
+        console.log("You forgot! inside then");
+        Materialize.toast(`An message has been sent to ${email}.`, 4000, 'round right');
+      })
+     .catch((e)=>{
+      console.log("the error", e);
+        // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast(e.message, 4000, 'round right'); // 4000 is the duration of the toast
+    });
   };
 
 })
