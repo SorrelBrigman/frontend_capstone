@@ -68,38 +68,24 @@ app.config(($routeProvider)=> {
 
 })
 .controller('detailCtrl',  function($scope, getProductFactory, $routeParams){
-   getProductFactory.getAllProducts()
+  let currentProduct = $routeParams.productID;
+    console.log("specific", currentProduct);
+   getProductFactory.getThisProduct(currentProduct)
    .then((e)=>{
-    $scope.listAll =  e;
-    return $scope.listAll;
+    $scope.thisProduct =  e;
+    console.log("scope.thisProduct", $scope.thisProduct);
+    return $scope.thisProduct;
    })
-   .then((e)=>{
-    let currentProduct = $routeParams.productID;
-    console.log("specific", e.currentProduct);
+   .then(()=>{
+
       //activates the modal on the dynamically created content
       $('.modal').modal();
       //open the modal
       $("#modal1").modal('open');
    });
-  console.log("return from factory", $scope.listAll);
 
 
-  // //activates the modal on the dynamically created content
-  // $('.modal').modal();
-  //     //open the modal
-  // $("#modal1").modal('open');
 
-
-  let currentProduct = $routeParams.productID;
-  console.log("specific", $scope.listAll.currentProduct);
-
-  $scope.openModule = (value)=> {
-    console.log("clicked");
-    //initialize modals
-      $('.modal').modal();
-      //open the modal
-     $("#modal1").modal('open');
-  };
 
 })
 .controller('addProductCtrl', function($scope, addProductFactory) {
@@ -162,6 +148,18 @@ app.config(($routeProvider)=> {
         }
         console.log("allProducts", allProducts);
         return allProducts;
+      });
+    }, //end of getAllProducts()
+    getThisProduct : (value) => {
+      console.log("value", value);
+      let thisProduct = value;
+      //get specific product from firebase
+      return $http
+      .get(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/.json`)
+      //parse the return from firebase, just returning the data object
+      .then((e)=>{
+        console.log("specific product object", e.data);
+        return e.data;
       });
     }
   };
