@@ -37,7 +37,7 @@
   <div class="row">
       <div class="col s12 m6" ng-repeat="product in listAll | filter: productSearch | filter: limitCat">
 
-        <div class="card {{product.category}}" >
+        <div class="card {{product.category}}  hoverable" >
           <p class="price">${{product.price}}</p>
           <div class="card-image" ng-click="openModule(product.key)">
           <!-- Modal Trigger -->
@@ -56,22 +56,24 @@
           </div>
         </div> <!-- end of card -->
       </div> <!-- end of col -->
+    </div> <!-- end of row -->
+</div> <!-- end card container -->
 
         <!-- Modal Structure -->
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="modal1" class="modal detailProductCard flex">
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div> <!-- end of modal footer -->
     <div class="modal-content">
       <div class="row">
-        <div class="col-m6">
+        <div class="col-m6 left">
           <a href={{thisProduct.link}}>
             <img src={{thisProduct.image}} alt="image of product" width="150">
           </a>
           <p>{{thisProduct.descript}}</p>
         </div>
-        <div class="col-m6">
+        <div class="col-m6 right">
           <h1>{{thisProduct.name}}</h1>
           <h4><a href={{thisProduct.compWeb}}>{{thisProduct.company}}</a></h4>
           <p><a href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
@@ -80,14 +82,3 @@
     </div> <!-- end of modal content -->
 
   </div> <!-- end of class modal -->
-
-
-
-
-
-
-
-
-
-    </div> <!-- end of row -->
-</div> <!-- end card container -->
