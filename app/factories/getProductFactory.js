@@ -47,6 +47,27 @@ app.factory('getProductFactory', function($http){
         }
         return e.data;
       });
-    }
+    },
+    getAllProductLinks : () => {
+      //get all the products from firebase
+      return $http
+      .get('https://skb-capstone-frontend.firebaseio.com/products.json')
+      //parse the return from firebase, just returning the data object
+      .then((e)=>{
+        return e.data;
+      })
+      //turn the data object into an array
+      .then((e)=>{
+        let productList = e;
+        let allProductLinks = [];
+        for (var key in productList) {
+          let myProductLink = productList[key].link;
+          console.log("myProduct",myProductLink );
+          allProductLinks.push(myProductLink);
+        }
+        console.log("allProductLinks", allProductLinks);
+        return allProductLinks;
+      });
+    }, //end of getAllProducts()
   };
 });
