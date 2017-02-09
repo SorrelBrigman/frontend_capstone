@@ -35,7 +35,9 @@
 <div class="cardContainer">
 
   <div class="row">
-      <div class="col s12 m6" ng-repeat="product in listAll | filter: productSearch | filter: limitCat">
+      <div class="col s12 m6" ng-repeat="product in listAll | orderBy: '-countVotes'| filter: productSearch | filter: limitCat">
+      <!--   -->
+
 
         <div class="card {{product.category}}  hoverable" >
           <p class="price">${{product.price}}</p>
