@@ -44,9 +44,12 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
         for(var i = 0; i < currentProducts.length; i++){
             //if there is a match with another product
             if(currentProducts[i]=== $scope.product.link){
-                //inform the user of this and prevent submit of new product
+                //inform the user of this
                 // Materialize.toast(message, displayLength, className, completeCallback);
                 Materialize.toast("That product is so awesome, it's already been added", 4000, 'round right'); // 4000 is the duration of the toast
+                //clear the form
+                resetForm();
+                //and prevent submit of new product
                 return;
             }
         }
