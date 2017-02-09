@@ -17,9 +17,9 @@ app.factory('getProductFactory', function($http){
           let myProduct = productList[key];
           console.log("myProduct", myProduct);
           myProduct.key = key;
+          myProduct.votesArray = [];
           for (var votes in productList[key].votes){
             // myProduct.votesArray = [];
-            myProduct.votesArray = [];
             let thisVote = productList[key].votes[votes];
             console.log("thisVote", thisVote);
             myProduct.votesArray.push(thisVote);
