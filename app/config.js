@@ -57,5 +57,11 @@ app.config(($routeProvider)=> {
       controller: "loginCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/login.html"
+    })
+    .when("/about", {
+      // use the add product ctrl
+      controller: "aboutCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/about.html"
     });
 });
