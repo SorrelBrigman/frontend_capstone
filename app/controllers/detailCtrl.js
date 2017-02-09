@@ -20,7 +20,19 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
     .then((e) => {
       console.log("I've been voted!");
       console.log("SCOPE", currentProduct);
+      let whoVoted = $scope.thisProduct.votesArray;
+      console.log("whoVoted", whoVoted);
       let user = e;
+      for (var i = 0; i < whoVoted.length; i++) {
+        console.log("whoVoted[i]", whoVoted[i]);
+        console.log("user in functoin", user);
+        if(user.uid === whoVoted[i]) {
+          console.log("I'm true!!!!");
+           // Materialize.toast(message, displayLength, className, completeCallback);
+          Materialize.toast("You're already voted for this product!", 4000, 'round right'); // 4000 is the duration of the toast
+          return;
+        }
+      }
       votingFactory.upVote(user, currentProduct);
       $(".upVotes").hide();
     });
