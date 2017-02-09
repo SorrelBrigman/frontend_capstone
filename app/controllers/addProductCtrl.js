@@ -1,4 +1,4 @@
-app.controller('addProductCtrl', function($scope, addProductFactory) {
+app.controller('addProductCtrl', function($scope, addProductFactory, $location) {
     //initialize materialize select element
     // $('select').material_select();
 
@@ -15,6 +15,11 @@ app.controller('addProductCtrl', function($scope, addProductFactory) {
     usassembled: false,
     usmanufactured: false
   };
+
+
+
+
+
 
  $scope.addProduct = ()=> {
 
@@ -40,7 +45,14 @@ app.controller('addProductCtrl', function($scope, addProductFactory) {
      }//if it has passed all of these tests, add the product to the database
         console.log("logging product");
         console.log($scope.product);
-        addProductFactory.addProductToFirebase($scope.product);
+        addProductFactory.addProductToFirebase($scope.product)
+        .then(()=>{
+            //reset form
+            resetForm();
+            //thank them for entering a product
+            Materialize.toast("Thanks for sharing your find with us!", 4000, 'round right'); // 4000 is the duration of the toast
+            // $location.url("/");
+        });
     //function to reset form
     //if the user did not select any of the us options in the checkbox
     //inform them their product doesn't fit in our collect
@@ -53,5 +65,21 @@ app.controller('addProductCtrl', function($scope, addProductFactory) {
 
 
   };
+
+const resetForm = () => {
+
+        $scope.product.name = '';
+        $scope.product.company = '';
+        $scope.product.compWeb = '';
+        $scope.product.link = '';
+        $scope.product.image = '';
+        $scope.product.descript = '';
+        $scope.product.price = '';
+        $scope.product.category = '';
+        $scope.product.uscompany = false;
+        $scope.product.usassembled = false;
+        $scope.product.usmanufactured = false;
+
+    };
 
 });
