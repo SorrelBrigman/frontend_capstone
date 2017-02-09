@@ -42,6 +42,16 @@ app.factory('getProductFactory', function($http){
       //parse the return from firebase, just returning the data object
       .then((e)=>{
         console.log("specific product object", e.data);
+        e.data.votesArray = [];
+        for (var votes in e.data.votes){
+            // myProduct.votesArray = [];
+            let thisVote = e.data.votes[votes];
+            console.log("thisVote", thisVote);
+            e.data.votesArray.push(thisVote);
+          }
+          if (e.data.votesArray) {
+          e.data.countVotes = e.data.votesArray.length;
+        };
         return e.data;
       });
     }
