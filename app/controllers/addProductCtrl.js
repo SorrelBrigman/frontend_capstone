@@ -1,6 +1,6 @@
 app.controller('addProductCtrl', function($scope, addProductFactory) {
     //initialize materialize select element
-    $('select').material_select();
+    // $('select').material_select();
 
   $scope.product = {
     name: '',
@@ -11,9 +11,9 @@ app.controller('addProductCtrl', function($scope, addProductFactory) {
     descript: '',
     price: '',
     category: '',
-    uscompany: '',
-    usassembled: '',
-    usmanufactured: ''
+    uscompany: false,
+    usassembled: false,
+    usmanufactured: false
   };
 
  $scope.addProduct = ()=> {
