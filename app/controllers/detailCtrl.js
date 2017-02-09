@@ -4,7 +4,6 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
    getProductFactory.getThisProduct(currentProduct)
    .then((e)=>{
     $scope.thisProduct =  e;
-    console.log("scope.thisProduct", $scope.thisProduct);
     return $scope.thisProduct;
    })
    .then(()=>{
@@ -18,21 +17,19 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
    $scope.upVote = () => {
     authFactory.getUser()
     .then((e) => {
-      console.log("I've been voted!");
-      console.log("SCOPE", currentProduct);
       let whoVoted = $scope.thisProduct.votesArray;
-      console.log("whoVoted", whoVoted);
       let user = e;
       for (var i = 0; i < whoVoted.length; i++) {
-        console.log("whoVoted[i]", whoVoted[i]);
-        console.log("user in functoin", user);
+        //if the user id matches one of the user.uid's who has already voted
         if(user.uid === whoVoted[i]) {
-          console.log("I'm true!!!!");
+          //tell them they have already votes
            // Materialize.toast(message, displayLength, className, completeCallback);
           Materialize.toast("You're already voted for this product!", 4000, 'round right'); // 4000 is the duration of the toast
+          //don't allow them to vote
           return;
         }
       }
+      //otherwise add their vote to the product
       votingFactory.upVote(user, currentProduct);
       $(".upVotes").hide();
     });

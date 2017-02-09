@@ -39,7 +39,7 @@
       <!--   -->
 
 
-        <div class="card {{product.category}}  hoverable" >
+        <div class="card {{product.category}}  hoverable">
           <p class="price">${{product.price}}</p>
           <div class="card-image" ng-click="openModule(product.key)">
           <!-- Modal Trigger -->
@@ -53,7 +53,7 @@
           </div>
           <div class="card-action">
             <a href="#">Flag as X</a>
-            <a href="#" class="right"><i class="material-icons">thumb_up</i></a>
+            <p class="right" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></p>
             <a href="#" class="right">{{product.countVotes}}</a>
           </div>
         </div> <!-- end of card -->
