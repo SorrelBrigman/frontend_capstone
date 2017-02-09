@@ -11,6 +11,7 @@ app.controller('loginCtrl', function($scope, $location, $q){
         //after logging in, take them to the home page
         $location.url("/");
         // $scope.$apply();
+
       })
       .catch((e)=>{
         // Materialize.toast(message, displayLength, className, completeCallback);

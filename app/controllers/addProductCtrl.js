@@ -4,6 +4,8 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
     getProductFactory.getAllProductLinks()
   .then((e)=>{
     currentProducts = e;
+    //add materialize styles to select
+     $('select').material_select();
     console.log("currentProducts",currentProducts);
   });
 
