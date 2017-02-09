@@ -1,4 +1,6 @@
 app.controller('addProductCtrl', function($scope, addProductFactory) {
+    //initialize materialize select element
+    $('select').material_select();
 
   $scope.product = {
     name: '',
@@ -15,6 +17,7 @@ app.controller('addProductCtrl', function($scope, addProductFactory) {
   };
 
  $scope.addProduct = ()=> {
+
     console.log("logging product");
     console.log($scope.product);
     addProductFactory.addProductToFirebase($scope.product);

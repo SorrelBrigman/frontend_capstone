@@ -2,29 +2,29 @@
     <form class="col s12 m6 offset-m3">
       <div class="row">
         <div class="input-field col s6">
-          <input id="product_name" type="text" class="validate" ng-model="product.name">
+          <input id="product_name" type="text" class="validate" ng-model="product.name" required>
           <label for="product_name">Product Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="company_name" type="text" class="validate" ng-model="product.company">
+          <input id="company_name" type="text" class="validate" ng-model="product.company" required>
           <label for="company_name">Company Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" class="validate" ng-model="product.compWeb">
+          <input type="url" class="validate" ng-model="product.compWeb" required>
           <label for="company_website" >Company Website</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="product_link" type="text" class="validate" ng-model="product.link">
-          <label for="product_link">Link to purchase Product</label>
+          <input id="product_link" type="url" class="validate" ng-model="product.link">
+          <label for="product_link" required>Link to purchase Product</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="product_image" type="text" class="validate" ng-model="product.image">
+          <input id="product_image" type="url" class="validate" ng-model="product.image" required>
           <label for="product_image">Link to Product Image</label>
         </div>
       </div>
@@ -38,15 +38,15 @@
         <div class="col s12">
           Current price of item:
           <div class="input-field inline">
-            <input id="price" type="text" class="validate" ng-model="product.price">
-            <label for="price" data-error="wrong" data-success="right">$</label>
+            <input id="price" type="text" class="validate" ng-model="product.price"required>
+            <label for="price">$</label>
           </div>
         </div>
       </div>
       <div class="row">
           <div class="input-field col s12">
-            <select class="browser-default" ng-model="product.category">
-              <option value="0" selected>Select Product Category</option>
+            <select ng-model="product.category">
+              <option value="" selected disabled>Select Product Category</option>
               <option value="Home">Home</option>
               <option value="Clothing">Clothing</option>
               <option value="Food">Food</option>
