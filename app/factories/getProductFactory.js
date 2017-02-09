@@ -15,7 +15,18 @@ app.factory('getProductFactory', function($http){
         let allProducts = [];
         for (var key in productList) {
           let myProduct = productList[key];
+          console.log("myProduct", myProduct);
           myProduct.key = key;
+          for (var votes in productList[key].votes){
+            // myProduct.votesArray = [];
+            myProduct.votesArray = [];
+            let thisVote = productList[key].votes[votes];
+            console.log("thisVote", thisVote);
+            myProduct.votesArray.push(thisVote);
+          }
+          if (myProduct.votesArray) {
+          myProduct.countVotes = myProduct.votesArray.length;
+        };
           allProducts.push(myProduct);
         }
         console.log("allProducts", allProducts);
