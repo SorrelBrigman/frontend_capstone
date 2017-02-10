@@ -35,19 +35,19 @@
 <div class="cardContainer">
 
   <div class="row">
-      <div class="col s12 m6" ng-repeat="product in listAll | orderBy: '-countVotes'| filter: productSearch | filter: limitCat">
+      <div class="col s12 m6 l4 flexbox" ng-repeat="product in listAll | orderBy: '-countVotes'| filter: productSearch | filter: limitCat">
       <!--   -->
 
 
-        <div class="card {{product.category}}  hoverable">
+        <div class="card {{product.category}}  hoverable productCard">
           <p class="price">${{product.price}}</p>
-          <div class="card-image" ng-click="openModule(product.key)">
+          <div class="card-image productImage valign-wrapper" ng-click="openModule(product.key)">
           <!-- Modal Trigger -->
               <!-- <a href="#" ng-click="openModule()"> -->
-              <img src={{product.image}}>
+              <img class="center" src={{product.image}}>
               <!-- </a> -->
           </div>
-          <div class="card-content">
+          <div class="card-content cardInfo">
             <span class="card-title">{{product.name}}</span>
             <p><a href={{product.compWeb}}>{{product.company}}</a></p>
           </div>

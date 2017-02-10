@@ -26,6 +26,23 @@ main {
 }
 
 
+.productImage {
+  height: 400px;
+  overflow: hidden;
+}
+
+
+
+.productImage img {
+  margin: 0 auto;
+  height: auto;
+  width: auto;
+}
+
+
+
+
+
 /*******Home Page Product Card Styling*************/
 .cardContainer {
   border-top: 2px solid black;
