@@ -49,12 +49,13 @@
           </div>
           <div class="card-content cardInfo">
             <span class="card-title">{{product.name}}</span>
-            <p><a href={{product.compWeb}}>{{product.company}}</a></p>
+            <p> by <a href={{product.compWeb}}>{{product.company}}</a></p>
+           <!--  <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a> -->
           </div>
           <div class="card-action">
             <a href="#">Flag as X</a>
-            <p class="right" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></p>
-            <a href="#" class="right">{{product.countVotes}}</a>
+
+            <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
           </div>
         </div> <!-- end of card -->
       </div> <!-- end of col -->
