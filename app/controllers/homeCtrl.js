@@ -1,8 +1,8 @@
-app.controller('homeCtrl',  function($scope, getProductFactory, $routeParams, $location, authFactory, votingFactory){
-   getProductFactory.getAllProducts()
-   .then((e)=>{
-    $scope.listAll =  e;
-   });
+app.controller('homeCtrl',  function($scope, products, getProductFactory, $routeParams, $location, authFactory, votingFactory){
+   // getProductFactory.getAllProducts()
+   // .then((e)=>{
+    $scope.listAll =  products;
+   // });
 
 
   $scope.limitCat = $routeParams.productCat;

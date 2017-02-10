@@ -25,7 +25,12 @@ app.config(($routeProvider)=> {
       //use the Home Ctrl
       controller: "homeCtrl",
       //use the partial "home"
-      templateUrl : "partials/home.html"
+      templateUrl : "partials/home.html",
+      resolve : {
+        products(getProductFactory) {
+          return getProductFactory.getAllProducts();
+        }
+      }
     })
     .when("/addproduct", {
       // use the add product ctrl
@@ -44,7 +49,12 @@ app.config(($routeProvider)=> {
       // use the add product ctrl
       controller: "homeCtrl",
       //use the partial "addProduct"
-      templateUrl: "partials/home.html"
+      templateUrl: "partials/home.html",
+      resolve : {
+        products(getProductFactory) {
+          return getProductFactory.getAllProducts();
+        }
+      }
     })
     .when("/details/:productID", {
       // use the add product ctrl
