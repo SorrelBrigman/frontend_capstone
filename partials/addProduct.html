@@ -1,0 +1,83 @@
+<div class="row">
+    <form class="col s12 m6 offset-m3" ng-submit="addProduct()">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="product_name" type="text" class="validate" ng-model="product.name" required>
+          <label for="product_name">Product Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="company_name" type="text" class="validate" ng-model="product.company" required>
+          <label for="company_name">Company Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="url" class="validate" ng-model="product.compWeb" required>
+          <label for="company_website" >Company Website</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="product_link" type="url" class="validate" ng-model="product.link" required>
+          <label for="product_link" required>Link to purchase Product</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="product_image" type="url" class="validate" ng-model="product.image" required>
+          <label for="product_image">Link to Product Image</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="productDescript" class="materialize-textarea" ng-model="product.descript"></textarea>
+          <label for="productDescript">Product Description:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          Current price of item:
+          <div class="input-field inline">
+            <input id="price" type="text" class="validate" ng-model="product.price"required>
+            <label for="price">$</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12">
+            <select ng-model="product.category" required>
+              <option value="" selected disabled>Select Product Category</option>
+              <option value="Home">Home</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Food">Food</option>
+              <option value="Other">Other</option>
+            </select>
+            <!-- <label>Select Product Category</label> -->
+         </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <p>
+              <input type="checkbox" id="companyUS" ng-model="product.uscompany"/>
+              <label for="companyUS">This product is made by an United States Company</label>
+            </p>
+            <p>
+              <input type="checkbox" id="assembledUS" ng-model="product.usassembled"/>
+              <label for="assembledUS">This product is assembled in the United States</label>
+            </p>
+            <p>
+              <input type="checkbox" id="manufacturedUS" ng-model="product.usmanufactured"/>
+              <label for="manufacturedUS">This product is manufactured in the United States</label>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 center">
+            <button type="submit" class="btn waves-effect waves-light" type="submit" name="action" >Submit
+            <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

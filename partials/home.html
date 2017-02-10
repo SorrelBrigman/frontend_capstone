@@ -1,0 +1,101 @@
+<!-- banner -->
+
+
+<div class="welcomeBanner">
+  <!-- <img class="materialboxed" width="650" src="http://i.imgur.com/SUSCJXf.jpg"> -->
+  <h1 class="teal-text">Shop Local, Support Local</h1>
+  <h5>Local is bigger than you think.</h5>
+</div>
+
+<!-- navigation -->
+<!-- search -->
+ <nav class="boardSearch">
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" ng-model="productSearch">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+      <!--select which category of products to look at-->
+      <div class="nav-content">
+        <ul class="tabs">
+          <li class="tab"><a href="#!/">All</a></li>
+          <li class="tab"><a href="#!/products/home">Home</a></li>
+          <li class="tab"><a href="#!/products/clothing">Clothing</a></li>
+          <li class="tab"><a class="active" href="#!/products/food">Food</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- product cards -->
+
+<div class="cardContainer">
+
+  <div class="row">
+      <div class="col s12 m6 l4 flexbox" ng-repeat="product in listAll | orderBy: '-countVotes'| filter: productSearch | filter: limitCat">
+      <!--   -->
+
+
+        <div class="card {{product.category}}  hoverable productCard">
+          <p class="price">${{product.price}}</p>
+          <div class="card-image productImage valign-wrapper" ng-click="openModule(product.key)">
+          <!-- Modal Trigger -->
+              <!-- <a href="#" ng-click="openModule()"> -->
+              <img class="center" src={{product.image}}>
+              <!-- </a> -->
+          </div>
+          <div class="card-content cardInfo">
+            <span class="card-title">{{product.name}}</span>
+            <p> by
+              <a href={{product.compWeb}}>{{product.company}}</a>
+              <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="#"><i class="material-icons">flag</i>flag if not local</a>
+
+            <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
+          </div>
+        </div> <!-- end of card -->
+      </div> <!-- end of col -->
+    </div> <!-- end of row -->
+</div> <!-- end card container -->
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal detailProductCard flex">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div> <!-- end of modal footer -->
+    <div class="modal-content">
+
+      <div class="row detailmodal">
+        <div class="col-m6 column1">
+
+            <a href={{thisProduct.link}}>
+              <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+
+          <p class="productDescript">{{thisProduct.descript}}</p>
+        </div>
+        <div class="col-m6 right column2">
+          <h2 class="right-align">{{thisProduct.name}}</h2>
+          <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
+          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <p class="right-align">{{thisProduct.countVotes}} people like this</p>
+          <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <div class="spacer"></div>
+           <a href="#!" class="flag teal-text"><i class="material-icons">flag</i> Report an issue with this product</a>
+        </div>
+      </div> <!-- end of row -->
+    </div> <!-- end of modal content -->
+<!--     <div class=>
+
+<!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
+
+      <!-- <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
+    </div> <!-- end of modal footer -->
+  </div> <!-- end of class modal -->

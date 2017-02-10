@@ -3,16 +3,119 @@
   <head>
     <meta charset="UTF-8">
     <title>Made For Us, Buy For Us</title>
+    <!-- materialize icons link -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--  materialize css link -->
     <link rel="stylesheet" type="text/css" href="lib/materialize/dist/css/materialize.min.css">
+    <!-- basic css link -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
   </head>
   <body>
 
 
+<!--   nav bar -->
+<!-- mobile hamburger nav  -->
+<ul class="side-nav" id="mobile-demo">
+          <li><a href="#!/login">LogIn</a></li>
+          <li><a href="#!/login" onclick="logOut()">LogOut</a></li>
+          <li class="tab"><a href="#test3">In Review</a></li>
+          <li class="tab"><a href="#test4">My Galleries</a></li>
+        </ul>
+<!-- traditional fixed nav -->
+  <div class="navbar-fixed navArea">
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="tab"><a href="#test3">In Review</a></li>
+          <li class="tab"><a href="#test4">My Galleries</a></li>
+          <li><a href="#!/login">LogIn</a></li>
+          <li><a href="#!/login" onclick="logOut()">LogOut</a></li>
+        </ul>
+
+      </div>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#!/about">About Us</a></li>
+          <li class="tab"><a class="active" href="#!/">Shop</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="test1" class="col s12"></div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="test3" class="col s12">Test 3</div>
+    <div id="test4" class="col s12">Test 4</div>
+  </div>
+<!-- end of nav bar -->
+
+
+
+  <!-- setup angular app -->
+  <main>
+    <div ng-app="forUsByUSApp">
+      <!-- setup ng-view -->
+      <div ng-view></div>
+
+    </div>
+  </main>
+<!-- end of angular app -->
+
+
+
+
+<!-- footer -->
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Made For US, Made By US</h5>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">In Review</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!/addproduct">Add Product</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Keep in Me in the Loop</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Sorrel Brigman
+            <a class="grey-text text-lighten-4 right" href="#!">Sorrel Brigman</a>
+            </div>
+          </div>
+        </footer>
+<!-- end of footer -->
+
+<!-- script tags -->
+
+<!-- dependencies -->
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/materialize/dist/js/materialize.min.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+<!-- app config -->
+    <script src="app/config.js"></script>
+<!-- factories -->
+    <script src="app/factories/addProductFactory.js"></script>
+    <script src="app/factories/authFactory.js"></script>
+    <script src="app/factories/getProductFactory.js"></script>
+    <script src="app/factories/votingFactory.js"></script>
+<!-- controllers -->
+    <script src="app/controllers/addProductCtrl.js"></script>
+    <script src="app/controllers/detailCtrl.js"></script>
+    <script src="app/controllers/homeCtrl.js"></script>
+    <script src="app/controllers/loginCtrl.js"></script>
+    <script src="app/controllers/aboutCtrl.js"></script>
+
+
+
     <script src="app/main.js"></script>
+
   </body>
 </html>

@@ -1,0 +1,155 @@
+/**Colors **/
+
+$friendlyLinkColor: #ffab40;
+$buyingLinkColor: teal;
+
+
+/**flex attributes to keep footer at bottom **/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/**Nav Bar*/
+
+.navArea {
+  margin-bottom: 10%;
+}
+
+/*****Home Page Styling****/
+
+.welcomeBanner {
+  text-align: center;
+}
+
+.boardSearch {
+  margin-bottom: 10%;
+}
+
+
+.productImage {
+  height: 400px;
+  overflow: hidden;
+}
+
+
+
+.productImage img {
+  margin: 0 auto;
+  height: auto;
+  width: auto;
+}
+
+.cardInfo {
+  height: 141px;
+  overflow: hidden;
+}
+
+.voteLink {
+  color: $friendlyLinkColor;
+}
+
+
+
+/*******Home Page Product Card Styling*************/
+.cardContainer {
+  border-top: 2px solid black;
+}
+
+  .price {
+    text-align: right;
+    padding-right: 2rem;
+    padding-top: 1rem;
+  }
+
+  .price p {
+    display: inline;
+    background-color: pink;
+  }
+
+.votes {
+  text-align: right;
+}
+
+
+/*******Detail Product Card********/
+
+
+.detailmodal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: stretch;
+}
+
+.column1{
+  width: 45%;
+  margin-top: -7%;
+}
+
+.detailProductImage {
+  width: 100%;
+}
+
+.column2 {
+  margin-top: -3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDescript {
+  text-align: justify;
+  width: 300px;
+  max-height: 100px;
+  overflow: scroll;
+}
+
+.spacer {
+  flex: 1 0 auto;
+}
+
+.detailPrice {
+  font-size: 2em;
+  padding: .5em;
+}
+
+.upVotes {
+  color: $friendlyLinkColor;
+  align-self: flex-end;
+}
+
+.flag {
+  font-size: 0.5em;
+  align-self: flex-end;
+}
+
+/********LogIn Form***********/
+.loginForm {
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.loginForm label {
+  text-align: left;
+}
+
+
+.regbutton:hover {
+  color: white;
+}
+
+
+
+/********
+form {
+  border: 2px solid;
+  padding: 10em;
+  border-radius: 7%;
+}
+********/
