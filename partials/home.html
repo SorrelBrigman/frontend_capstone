@@ -49,11 +49,13 @@
           </div>
           <div class="card-content cardInfo">
             <span class="card-title">{{product.name}}</span>
-            <p> by <a href={{product.compWeb}}>{{product.company}}</a></p>
-           <!--  <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a> -->
+            <p> by
+              <a href={{product.compWeb}}>{{product.company}}</a>
+              <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a>
+            </p>
           </div>
           <div class="card-action">
-            <a href="#">Flag as X</a>
+            <a href="#"><i class="material-icons">flag</i>flag if not local</a>
 
             <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
           </div>
