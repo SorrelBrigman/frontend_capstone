@@ -1,3 +1,9 @@
+/**Colors **/
+
+$friendlyLinkColor: #ffab40;
+$buyingLinkColor: teal;
+
+
 /**flex attributes to keep footer at bottom **/
 body {
   display: flex;
@@ -45,7 +51,7 @@ main {
 }
 
 .voteLink {
-  color: #ffab40;
+  color: $friendlyLinkColor;
 }
 
 
@@ -72,8 +78,55 @@ main {
 
 
 /*******Detail Product Card********/
-.detailProductCard {
+
+
+.detailmodal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: stretch;
+}
+
+.column1{
+  width: 45%;
+  margin-top: -7%;
+}
+
+.detailProductImage {
+  width: 100%;
+}
+
+.column2 {
+  margin-top: -3%;
+  display: flex;
   flex-direction: column;
+}
+
+.productDescript {
+  text-align: justify;
+  width: 300px;
+  max-height: 100px;
+  overflow: scroll;
+}
+
+.spacer {
+  flex: 1 0 auto;
+}
+
+.detailPrice {
+  font-size: 2em;
+  padding: .5em;
+}
+
+.upVotes {
+  color: $friendlyLinkColor;
+  align-self: flex-end;
+}
+
+.flag {
+  font-size: 0.5em;
+  align-self: flex-end;
 }
 
 /********LogIn Form***********/
@@ -82,7 +135,9 @@ main {
   margin-top: 10%;
 }
 
-
+.loginForm label {
+  text-align: left;
+}
 
 
 .regbutton:hover {

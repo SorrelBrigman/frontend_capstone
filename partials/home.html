@@ -71,25 +71,31 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div> <!-- end of modal footer -->
     <div class="modal-content">
-      <div class="row">
-        <div class="col-m6 left">
-          <p class="center">{{thisProduct.countVotes}} <i class="material-icons">thumb_up</i></p>
-          <a href={{thisProduct.link}}>
-            <img src={{thisProduct.image}} alt="image of product" width="150">
-          </a>
-          <p>{{thisProduct.descript}}</p>
+
+      <div class="row detailmodal">
+        <div class="col-m6 column1">
+
+            <a href={{thisProduct.link}}>
+              <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+
+          <p class="productDescript">{{thisProduct.descript}}</p>
         </div>
-        <div class="col-m6 right">
-          <h1>{{thisProduct.name}}</h1>
-          <h4><a href={{thisProduct.compWeb}}>{{thisProduct.company}}</a></h4>
-          <p><a href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+        <div class="col-m6 right column2">
+          <h2 class="right-align">{{thisProduct.name}}</h2>
+          <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
+          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <p class="right-align">{{thisProduct.countVotes}} people like this</p>
+          <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <div class="spacer"></div>
+           <a href="#!" class="flag teal-text"><i class="material-icons">flag</i> Report an issue with this product</a>
         </div>
       </div> <!-- end of row -->
     </div> <!-- end of modal content -->
-    <div class=>
-       <a href="#!" class="waves-effect left waves-green">Flag this product as non-American<i class="material-icons">warning</i></a>
+<!--     <div class=>
+
 <!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
 
-      <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
+      <!-- <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
     </div> <!-- end of modal footer -->
   </div> <!-- end of class modal -->
