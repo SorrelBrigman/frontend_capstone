@@ -1,5 +1,31 @@
-app.controller('amazonSearchCtrl',function(){
+app.controller('amazonSearchCtrl',function($scope, $http){
 
+  $scope.amazonSearchQuery = {
+    searchIndex: "",
+    Keywords: "",
+    responseGroup: 'ItemAttributes,Offers,Images'
+  }
+
+  $scope.searchAmazon = () => {
+    console.log($scope.amazonSearchQuery)
+    $scope.getAmazon();
+  };
+
+  $scope.getAmazon = () => {
+    $http.get('/api/amazon',
+      {params: $scope.searchAmazon}
+      )
+    .then((things) => {
+        console.log(things)
+    })
+  }
+
+
+      // $('select').material_select();
+
+
+
+});
 
 
 // my key AKIAJXXFIMAXVEXQ354Q
@@ -19,19 +45,19 @@ app.controller('amazonSearchCtrl',function(){
 
 
 
-  let today = new Date();
-  let todayISO = today.toISOString();
-  let urlTimeStamp = escape(todayISO);
+//   let today = new Date();
+//   let todayISO = today.toISOString();
+//   let urlTimeStamp = escape(todayISO);
 
 
-//node code from stackoverflow
-var request = require("request");
-var crypto = require("crypto");
-var d = new Date().toUTCString();
-var config = {
-  awsAccessKeyId : "AKIAJXXFIMAXVEXQ354Q",
-  awsSecretKey   : "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"
-};
+// //node code from stackoverflow
+// var request = require("request");
+// var crypto = require("crypto");
+// var d = new Date().toUTCString();
+// var config = {
+//   awsAccessKeyId : "AKIAJXXFIMAXVEXQ354Q",
+//   awsSecretKey   : "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"
+// };
 
 // // Options for the http POST request
 // var options = {
@@ -52,25 +78,25 @@ var config = {
 // }
 
 
-var amazon = require('amazon-product-api');
+// var amazon = require('amazon-product-api');
 
-var client = amazon.createClient({
-  awsId: "AKIAJXXFIMAXVEXQ354Q",
-  awsSecret: "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",
-  awsTag: "sorrelbrigman-20"
-});
+// var client = amazon.createClient({
+//   awsId: "AKIAJXXFIMAXVEXQ354Q",
+//   awsSecret: "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",
+//   awsTag: "sorrelbrigman-20"
+// });
 
-client.itemSearch({
-  director: 'Quentin Tarantino',
-  actor: 'Samuel L. Jackson',
-  searchIndex: 'DVD',
-  audienceRating: 'R',
-  responseGroup: 'ItemAttributes,Offers,Images'
-}).then(function(results){
-  console.log(results);
-}).catch(function(err){
-  console.log(err);
-});
+// client.itemSearch({
+//   director: 'Quentin Tarantino',
+//   actor: 'Samuel L. Jackson',
+//   searchIndex: 'DVD',
+//   audienceRating: 'R',
+//   responseGroup: 'ItemAttributes,Offers,Images'
+// }).then(function(results){
+//   console.log(results);
+// }).catch(function(err){
+//   console.log(err);
+// });
 
 
 
@@ -87,7 +113,6 @@ client.itemSearch({
 //     console.log("error", e);
 //   });
 
-});
 
 
 //QcEoo9MqKiokQKAjr6mMfhotHgQmerco3AHZvYizPEM%3D

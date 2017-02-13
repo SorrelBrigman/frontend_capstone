@@ -12,7 +12,7 @@ module.exports = (grunt)=> {
         },
         dist: {
             files: {
-                'styles/main.css': 'styles/main.scss'
+                'client/styles/main.css': 'client/styles/main.scss'
             }
         }
     },
@@ -25,13 +25,13 @@ module.exports = (grunt)=> {
           browserify: true
         },
         files: {
-          src: ['app/**/*.js']
+          src: ['client/app/**/*.js']
         }
     },
 
     watch: {
       javascripts: {
-        files: ['app/**/*.js'],
+        files: ['client/app/**/*.js'],
         tasks: ['jshint']
       },
       sass: {
