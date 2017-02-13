@@ -73,5 +73,11 @@ app.config(($routeProvider)=> {
       controller: "aboutCtrl",
       //use the partial "addProduct"
       templateUrl: "partials/about.html"
+    })
+    .when("/addProductThroughAmazon", {
+      //use the amazon product controller
+      controller : "amazonSearchCtrl",
+      // use the paritial "amazon search"
+      templateUrl: "partials/addByAmazon.html"
     });
 });
