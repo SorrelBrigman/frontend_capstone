@@ -7,16 +7,47 @@ app.controller('amazonSearchCtrl',function($scope, $http){
   }
 
   $scope.searchAmazon = () => {
-    console.log($scope.amazonSearchQuery)
+    console.log("amazonSearchQuery", $scope.amazonSearchQuery)
     $scope.getAmazon();
   };
 
   $scope.getAmazon = () => {
-    $http.get('/api/amazon',
-      {params: $scope.searchAmazon}
-      )
+    $http.post('/api/amazon',
+      {params: { "searchIndex" : $scope.amazonSearchQuery.searchIndex,
+                 "Keywords" : $scope.amazonSearchQuery.Keywords,
+                 "responseGroup": "ItemAttributes,Offers,Images"}})
     .then((things) => {
-        console.log(things)
+        console.log(things.data);
+        let searchResults = [];
+        for (var i = 0; i < things.data.length; i++) {
+          let searchProduct = {};
+          searchProduct.productTitle = things.data[i].ItemAttributes[0].Title[0];
+          console.log("title", searchProduct.productTitle);
+          searchProduct.productCompany = things.data[i].ItemAttributes[0].Brand[0];
+          console.log("company", searchProduct.productCompany);
+
+          if(things.data[i].ImageSets) {
+            searchProduct.productImage = things.data[i].ImageSets[0].ImageSet[0].MediumImage[0].URL[0];
+            console.log("productImage", searchProduct.productImage);
+            if(things.data[i].ItemAttributes[0].ListPrice) {
+              searchProduct.listPrice = things.data[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0];
+            console.log("price", searchProduct.listPrice);
+            }
+            searchProduct.itemDescription = "";
+          for (var j = 0; j < things.data[i].ItemAttributes[0].Feature.length; j++) {
+            searchProduct.itemDescription += things.data[i].ItemAttributes[0].Feature[j] + ". ";
+            };
+            console.log("description", searchProduct.itemDescription);
+          }
+          searchProduct.productLink = things.data[i].DetailPageURL[0];
+          console.log("link", searchProduct.productLink);
+          searchProduct.amazonUniqueId = things.data[i].ASIN[0];
+          console.log("ASIN", searchProduct.amazonUniqueId);
+          searchProduct.addDate = new Date();
+          console.log("date", searchProduct.addDate);
+          searchResults.push(searchProduct);
+        };
+        console.log("searchResults", searchResults);
     })
   }
 

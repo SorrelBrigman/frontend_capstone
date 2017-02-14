@@ -19,27 +19,30 @@ var client = amazon.createClient({
 });
 
 
-app.get('/api/amazon', (req, res, err) => {
-  console.log("amazon!!!")
-  console.log("req,body", req.body)
+app.post('/api/amazon', (req, res, err) => {
+  console.log("amazon!!!");
+  console.log("req,body", req.body);
+  console.log("req.body.params.Keywords", req.body.params.Keywords);
   client.itemSearch({
     // Keywords :"piñon coffee",
     // responseGroup : "ItemAttributes,Offers,Images",
     // searchIndex : "Grocery"
-    director: 'Quentin Tarantino',
-    actor: 'Samuel L. Jackson',
-    searchIndex: 'DVD',
-    audienceRating: 'R',
+    Keywords : req.body.params.Keywords,
+    searchIndex: req.body.params.searchIndex,
     responseGroup: 'ItemAttributes,Offers,Images'
+    // director: 'Quentin Tarantino',
+    // actor: 'Samuel L. Jackson',
+    // searchIndex: 'DVD',
+    // audienceRating: 'R',
+    // responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results){
-    console.log(results);
+    console.log("results from request", results);
+    res.send(results);
   }).catch(function(err){
     console.log(err);
   });
 })
-//AssociateTag=sorrelbrigman-20
-// my key AKIAJXXFIMAXVEXQ354Q
-//Signature key: CUzVp0CPbLCpbdTXUrmfnEZstpJ/6gbbCRnLsT9C
+
 
 
 const PORT = process.env.PORT || 3000
