@@ -68,38 +68,42 @@
     <div class="modal-content">
 
       <div class="row detailmodal">
-        <div class="col-m6 column1">
 
+        <div class="col-m6 column1">
+          <h5 class="left-align">{{thisProduct.name}}</h5>
+          <p class="left-align">by {{thisProduct.company}}</p>
+          <p class="right-align">{{thisProduct.price}}</p>
             <a href={{thisProduct.link}}>
               <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
             </a>
-            <p class="productDescript">{{thisProduct.descript}}</p>
-            <p>
-              <input type="checkbox" id="companyUS" ng-model="product.uscompany"/>
-              <label for="companyUS">This product is made by an United States Company</label>
-            </p>
-            <p>
-              <input type="checkbox" id="assembledUS" ng-model="product.usassembled"/>
-              <label for="assembledUS">This product is assembled in the United States</label>
-            </p>
-            <p>
-              <input type="checkbox" id="manufacturedUS" ng-model="product.usmanufactured"/>
-              <label for="manufacturedUS">This product is manufactured in the United States</label>
-            </p>
-
         </div>
-        <div class="col-m6 right column2">
-          <h2 class="right-align">{{thisProduct.name}}</h2>
-          <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
-          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>{{thisProduct.price}}</a></p>
-          <p class="right-align">{{thisProduct.countVotes}} people like this</p>
-          <div>
-            <label>Enter {{thisProduct.company}}'s website</label>
-            <input type="text" name="">
-          </div>
 
-          <div class="spacer"></div>
-           <a href="#!" class="flag teal-text"><i class="material-icons">flag</i> Report an issue with this product</a>
+        <div class="col-m6 right column2">
+          <p class="productDescript">Description: {{thisProduct.descript}}</p>
+          <form class="amazonCheck" ng-submit=amazonAdd(thisProduct)>
+            <div>
+              <label>Enter {{thisProduct.company}}'s website:</label>
+              <input type="url" ng-model="web" required>
+            </div>
+            <p>
+                <input type="checkbox" id="companyUS" ng-model="uscompany"/>
+                <label for="companyUS">This product is made by an United States Company</label>
+              </p>
+              <p>
+                <input type="checkbox" id="assembledUS" ng-model="usassembled"/>
+                <label for="assembledUS">This product is assembled in the United States</label>
+              </p>
+              <p>
+                <input type="checkbox" id="manufacturedUS" ng-model="usmanufactured"/>
+                <label for="manufacturedUS">This product is manufactured in the United States</label>
+              </p>
+
+
+
+            <div class="spacer"></div>
+            <button type="submit" class="center btn">Add to Collection</button>
+          </form>
+          </div>
         </div>
       </div>  <!-- end of row -->
    </div> <!-- end of modal content -->
