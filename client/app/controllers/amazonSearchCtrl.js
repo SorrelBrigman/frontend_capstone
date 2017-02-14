@@ -27,7 +27,7 @@ app.controller('amazonSearchCtrl',function($scope, $http){
           console.log("company", searchProduct.productCompany);
 
           if(things.data[i].ImageSets) {
-            searchProduct.productImage = things.data[i].ImageSets[0].ImageSet[0].MediumImage[0].URL[0];
+            searchProduct.productImage = things.data[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
             console.log("productImage", searchProduct.productImage);
             if(things.data[i].ItemAttributes[0].ListPrice) {
               searchProduct.listPrice = things.data[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0];
@@ -48,6 +48,7 @@ app.controller('amazonSearchCtrl',function($scope, $http){
           searchResults.push(searchProduct);
         };
         console.log("searchResults", searchResults);
+        $scope.searchResults = searchResults;
     })
   }
 
