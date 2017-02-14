@@ -34,25 +34,26 @@
 
 
         <div class="card {{product.category}}  hoverable productCard">
-          <p class="price">{{product.listPrice}}</p>
+          <a class="left voteLink" ng-click=addProduct(product)>Add to Collection</a>
+          <p class="price">{{product.price}}</p>
           <div class="card-image productImage valign-wrapper" ng-click="">
           <!-- Modal Trigger -->
               <!-- <a href="#" ng-click="openModule()"> -->
-              <img class="center" src={{product.productImage}}>
+              <img class="center" src={{product.image}}>
               <!-- </a> -->
           </div>
           <div class="card-content cardInfo">
-            <span class="card-title">{{product.productTitle}}</span>
+            <span class="card-title">{{product.name}}</span>
             <p> by
-              <a href={{product.productLink}}>{{product.productCompany}}</a>
-              <a class="right voteLink" ng-click="upVote()""><i class="material-icons">thumb_up</i></a>
+              <a href={{product.productLink}}>{{product.company}}</a>
+              <!-- <a class="right voteLink" ng-click="upVote()""><i class="material-icons">thumb_up</i></a> -->
             </p>
           </div>
-          <div class="card-action">
+<!--           <div class="card-action">
             <a href="#"><i class="material-icons">flag</i>flag if not local</a>
 
             <span href="#" class="right">{{}}<span ng-click=""> likes</span>
-          </div>
+          </div> -->
         </div> <!-- end of card -->
       </div> <!-- end of col -->
     </div> <!-- end of row -->
@@ -60,11 +61,11 @@
 
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal detailProductCard flex">
+  <div id="modal2" class="modal detailProductCard flex">
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div> <!-- end of modal footer -->
-<!--     <div class="modal-content">
+    <div class="modal-content">
 
       <div class="row detailmodal">
         <div class="col-m6 column1">
@@ -72,20 +73,36 @@
             <a href={{thisProduct.link}}>
               <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
             </a>
+            <p class="productDescript">{{thisProduct.descript}}</p>
+            <p>
+              <input type="checkbox" id="companyUS" ng-model="product.uscompany"/>
+              <label for="companyUS">This product is made by an United States Company</label>
+            </p>
+            <p>
+              <input type="checkbox" id="assembledUS" ng-model="product.usassembled"/>
+              <label for="assembledUS">This product is assembled in the United States</label>
+            </p>
+            <p>
+              <input type="checkbox" id="manufacturedUS" ng-model="product.usmanufactured"/>
+              <label for="manufacturedUS">This product is manufactured in the United States</label>
+            </p>
 
-          <p class="productDescript">{{thisProduct.descript}}</p>
         </div>
         <div class="col-m6 right column2">
           <h2 class="right-align">{{thisProduct.name}}</h2>
           <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
-          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>{{thisProduct.price}}</a></p>
           <p class="right-align">{{thisProduct.countVotes}} people like this</p>
-          <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <div>
+            <label>Enter {{thisProduct.company}}'s website</label>
+            <input type="text" name="">
+          </div>
+
           <div class="spacer"></div>
            <a href="#!" class="flag teal-text"><i class="material-icons">flag</i> Report an issue with this product</a>
-        </div> -->
-      </div> <!-- end of row -->
-    </div> <!-- end of modal content -->
+        </div>
+      </div>  <!-- end of row -->
+   </div> <!-- end of modal content -->
 <!--     <div class=>
 
 <!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
