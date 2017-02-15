@@ -78,6 +78,14 @@ app.config(($routeProvider)=> {
       //use the amazon product controller
       controller : "amazonSearchCtrl",
       // use the paritial "amazon search"
-      templateUrl: "partials/addByAmazon.html"
+      templateUrl: "partials/addByAmazon.html",
+      //if user not logged in, redirects to the login page
+      resolve: {
+        user: (authFactory, $location) => {
+          return authFactory.getUser().catch(()=>{
+            $location.url("/login");
+          });
+        }
+      }
     });
 });
