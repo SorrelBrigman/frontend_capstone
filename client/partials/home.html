@@ -57,6 +57,8 @@
           <div class="card-action">
             <p ng-click="flagItem(product.key)"><i class="material-icons">flag</i>flag if not local</p>
 
+            <p ng-if="(product.flags)">This product has been flagged</p>
+
             <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
           </div>
         </div> <!-- end of card -->
