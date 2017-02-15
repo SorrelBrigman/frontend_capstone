@@ -113,6 +113,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
           .then(()=>{
           //thank them for entering a product
           Materialize.toast("Thanks for sharing your find with us!", 4000, 'round right'); // 4000 is the duration of the toast
+          $('#modal2').modal('close');
           //wait 3 second, then return to homepage
           setTimeout(()=> {
             $location.url("/addProductThroughAmazon");
