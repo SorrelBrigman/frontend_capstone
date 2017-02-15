@@ -10,12 +10,36 @@ app.factory('amazonFactory', function($http, addProductFactory, $location){
           let searchResults = [];
           for (var i = 0; i < things.data.length; i++) {
             let searchProduct = {};
+            //set the amazon search category to a largerlocal search category
+            if (value.searchIndex === "ArtsAndCrafts" || value.searchIndex === "HomeGarden"){
+              searchProduct.category = "Home";
+            } else if (value.searchIndex === "Fashion") {
+              searchProduct.category = "Clothing";
+            } else if (value.searchIndex === "Grocery") {
+              searchProduct.category = "Food";
+            } else {
             searchProduct.category = value.searchIndex;
+            }
+            //parse the product name
             searchProduct.name = things.data[i].ItemAttributes[0].Title[0];
             console.log("title", searchProduct.name);
-            searchProduct.company = things.data[i].ItemAttributes[0].Brand[0];
-            console.log("company", searchProduct.company);
-
+            //parse the company name
+            if (things.data[i].ItemAttributes[0].Brand === undefined) {
+              continue;
+            } else {
+              searchProduct.company = things.data[i].ItemAttributes[0].Brand[0];
+              console.log("company", searchProduct.company);
+            }
+            //parse the amazon purchase link
+            searchProduct.link = things.data[i].DetailPageURL[0];
+            console.log("link", searchProduct.link);
+            //parse the amazon unique product id
+            searchProduct.amazonUniqueId = things.data[i].ASIN[0];
+            console.log("ASIN", searchProduct.amazonUniqueId);
+            //stamp the search date on the product object for later use
+            searchProduct.addDate = new Date();
+            console.log("date", searchProduct.addDate);
+            //if the product has images, gather one
             if(things.data[i].ImageSets) {
               searchProduct.image = things.data[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
               console.log("productImage", searchProduct.image);
@@ -29,12 +53,12 @@ app.factory('amazonFactory', function($http, addProductFactory, $location){
               }
               console.log("description", searchProduct.descript);
             }
-            searchProduct.link = things.data[i].DetailPageURL[0];
-            console.log("link", searchProduct.link);
-            searchProduct.amazonUniqueId = things.data[i].ASIN[0];
-            console.log("ASIN", searchProduct.amazonUniqueId);
-            searchProduct.addDate = new Date();
-            console.log("date", searchProduct.addDate);
+            // searchProduct.link = things.data[i].DetailPageURL[0];
+            // console.log("link", searchProduct.link);
+            // searchProduct.amazonUniqueId = things.data[i].ASIN[0];
+            // console.log("ASIN", searchProduct.amazonUniqueId);
+            // searchProduct.addDate = new Date();
+            // console.log("date", searchProduct.addDate);
             searchResults.push(searchProduct);
           }
           console.log("searchResults", searchResults);
