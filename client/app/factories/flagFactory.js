@@ -37,6 +37,18 @@ app.factory('flagFactory', function($http) {
       }
       console.log("flagComments", flagComments);
       return flagComments;
+    }, //end of getFlags()
+    deleteFlagProduct : (flaggedProduct) => {
+      let thisProduct = flaggedProduct;
+
+      console.log("thisProduct", thisProduct);
+
+      //delete to firebase
+      return $http
+      //an array of users, for each vote (limit by the users in the card)
+        .delete(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/.json`);
+
+
     }
   };//end of factory object
 });//end of factory

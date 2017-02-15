@@ -56,13 +56,23 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
       //otherwise add their flag to the product
       flagFactory.flagProduct(user, thisProduct, comment)
         .then((e)=>{
-          //clear flag comment form
-          // $scope.flagComment = "";
+
           console.log("whatever cameback from flagging", e);
-      //change flagged value to true
+
       Materialize.toast("Thank you for bringing this to our attention.", 4000, 'round right'); // 4000 is the duration of the toast
-            //don't allow them to flag the product
-      $location.url("/");
+      // add one to the previous number of  flags on that item
+      let currentFlagNumber = whoFlagged.length + 2;
+      console.log("currentFlagNumber", currentFlagNumber);
+      // if the new # of flags is greater than or equal to 3
+      if(currentFlagNumber >= 3) {
+        //delete the item from the collection of products
+        flagFactory.deleteFlagProduct(thisProduct)
+        .then(()=>{
+          //refirect the user back to the homepage
+          $location.url("/");
+        });
+      }
+
       //count the number of flags
       //if flag # = 3, remove product
         })
