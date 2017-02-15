@@ -47,7 +47,8 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
               continue;
             }
             if(things.data[i].ItemAttributes[0].ListPrice) {
-              searchProduct.price = (things.data[i].ItemAttributes[0].ListPrice[0].Amount[0] / 100);
+              searchProduct.price = (things.data[i].ItemAttributes[0].ListPrice[0].Amount[0] / 100).toFixed(2);
+              //parseFloat(Math.round(num3 * 100) / 100).toFixed(2);
               console.log("price", searchProduct.price);
             } else {
                 continue;
@@ -115,9 +116,9 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
           Materialize.toast("Thanks for sharing your find with us!", 4000, 'round right'); // 4000 is the duration of the toast
           $('#modal2').modal('close');
           //wait 3 second, then return to homepage
-          setTimeout(()=> {
-            $location.url("/addProductThroughAmazon");
-            }, 3000);
+          // setTimeout(()=> {
+            $location.url("/");
+            // }, 3000);
 
         });//end of then
        } else {

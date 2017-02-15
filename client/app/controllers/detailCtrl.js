@@ -1,4 +1,4 @@
-app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, authFactory, votingFactory){
+app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, authFactory, votingFactory, $location){
   let currentProduct = $routeParams.productID;
     console.log("specific", currentProduct);
    getProductFactory.getThisProduct(currentProduct)
@@ -13,6 +13,15 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
       //open the modal
       $("#modal1").modal('open');
    });
+
+$scope.flagItem = ()=> {
+
+
+    $location.url(`/flag/${currentProduct}`);
+
+  };
+
+
 
    $scope.upVote = () => {
     authFactory.getUser()

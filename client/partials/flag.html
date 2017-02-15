@@ -1,0 +1,57 @@
+ <h1>Flag Modal</h1>
+
+ <!-- Flag Modal Structure -->
+  <div id="modal3" class="modal detailProductCard flex">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+    <!-- end of modal footer -->
+    <div class="modal-content">
+
+      <div class="row detailmodal">
+
+        <div class="col-m6 column1">
+          <h5 class="left-align">{{flaggedProduct.name}}</h5>
+          <p class="left-align">by {{flaggedProduct.company}}</p>
+          <p class="right-align">${{flaggedProduct.price}}</p>
+            <a href={{flaggedProduct.link}}>
+              <img src={{flaggedProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+        </div>
+
+        <div class="col-m6 right column2">
+          <p class="productDescript">Description: {{flaggedProduct.descript}}</p>
+          <form class="amazonCheck" ng-submit=amazonAdd(flaggedProduct)>
+            <div>
+              <label>Enter {{flaggedProduct.company}}'s website:</label>
+              <input type="url" ng-model="web" required>
+            </div>
+            <p>
+                <input type="checkbox" id="companyUS" ng-model="uscompany"/>
+                <label for="companyUS">This product is made by an United States Company</label>
+              </p>
+              <p>
+                <input type="checkbox" id="assembledUS" ng-model="usassembled"/>
+                <label for="assembledUS">This product is assembled in the United States</label>
+              </p>
+              <p>
+                <input type="checkbox" id="manufacturedUS" ng-model="usmanufactured"/>
+                <label for="manufacturedUS">This product is manufactured in the United States</label>
+              </p>
+
+
+
+            <div class="spacer"></div>
+            <button type="submit" class="center btn">Add to Collection</button>
+          </form>
+          </div>
+        </div>
+      </div>  <!-- end of row -->
+   </div> <!-- end of modal content -->
+<!--     <div class=>
+
+<!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
+
+      <!-- <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
+    </div> <!-- end of modal footer -->
+  </div> <!-- end of class modal -->
