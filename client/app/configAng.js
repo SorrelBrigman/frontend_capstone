@@ -62,16 +62,22 @@ app.config(($routeProvider)=> {
       //use the partial "addProduct"
       templateUrl: "partials/home.html"
     })
+    .when("/flag/:productID", {
+      // use the flag ctrl
+      controller: "flagCtrl",
+      //use the partial "home"
+      templateUrl: "partials/home.html"
+    })
     .when("/login", {
-      // use the add product ctrl
+      // use the login ctrl
       controller: "loginCtrl",
-      //use the partial "addProduct"
+      //use the partial "logint"
       templateUrl: "partials/login.html"
     })
     .when("/about", {
-      // use the add product ctrl
+      // use the about ctrl
       controller: "aboutCtrl",
-      //use the partial "addProduct"
+      //use the partial "about"
       templateUrl: "partials/about.html"
     })
     .when("/addProductThroughAmazon", {
