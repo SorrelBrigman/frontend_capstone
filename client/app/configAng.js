@@ -62,11 +62,18 @@ app.config(($routeProvider)=> {
       //use the partial "addProduct"
       templateUrl: "partials/home.html"
     })
-    .when("/flag/:productID", {
+    .when("/flag/:productKey", {
       // use the flag ctrl
       controller: "flagCtrl",
       //use the partial "home"
-      templateUrl: "partials/home.html"
+      templateUrl: "partials/home.html",
+      resolve: {
+        user: (authFactory, $location) => {
+          return authFactory.getUser().catch(()=>{
+            $location.url("/login");
+          });
+        }
+      }
     })
     .when("/login", {
       // use the login ctrl

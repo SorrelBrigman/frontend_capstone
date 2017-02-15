@@ -14,6 +14,15 @@ app.controller('homeCtrl',  function($scope, products, getProductFactory, $route
     $location.url(`/details/${whichProduct}`);
 
   };
+
+  $scope.flagItem = (value)=> {
+
+    let whichProduct = value;
+    $location.url(`/flag/${whichProduct}`);
+
+  };
+
+
   $scope.upVote = (product, votes) => {
     authFactory.getUser()
     .then((e) => {
