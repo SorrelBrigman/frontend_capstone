@@ -44,7 +44,7 @@
           <div class="card-image productImage valign-wrapper" ng-click="openModule(product.key)">
           <!-- Modal Trigger -->
               <!-- <a href="#" ng-click="openModule()"> -->
-              <img class="center" src={{product.image}}>
+              <img class="center" ng-src={{product.image}}>
               <!-- </a> -->
           </div>
           <div class="card-content cardInfo">
@@ -55,7 +55,9 @@
             </p>
           </div>
           <div class="card-action">
-            <a href="#"><i class="material-icons">flag</i>flag if not local</a>
+            <p ng-click="flagItem(product.key)"><i class="material-icons">flag</i>flag if not local</p>
+
+            <p ng-if="(product.flags)">This product has been flagged</p>
 
             <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
           </div>
@@ -76,7 +78,7 @@
         <div class="col-m6 column1">
 
             <a href={{thisProduct.link}}>
-              <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
+              <img ng-src={{thisProduct.image}} alt="image of product" class="detailProductImage">
             </a>
 
           <p class="productDescript">{{thisProduct.descript}}</p>
@@ -88,14 +90,57 @@
           <p class="right-align">{{thisProduct.countVotes}} people like this</p>
           <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
           <div class="spacer"></div>
-           <a href="#!" class="flag teal-text"><i class="material-icons">flag</i> Report an issue with this product</a>
+           <p class="flag teal-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
+           <p class="finePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
         </div>
       </div> <!-- end of row -->
     </div> <!-- end of modal content -->
-<!--     <div class=>
 
-<!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
+  </div> <!-- end of class modal -->
 
-      <!-- <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
-    </div> <!-- end of modal footer -->
+
+
+
+
+
+<!-- Flag Modal Structure -->
+  <div id="modal3" class="modal detailProductCard flex">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+    <!-- end of modal footer -->
+    <div class="modal-content">
+
+      <div class="row detailmodal">
+
+        <div class="col-m6 column1">
+          <h5 class="left-align">{{flaggedProduct.name}}</h5>
+          <p class="left-align">by {{flaggedProduct.company}}</p>
+          <p class="right-align">${{flaggedProduct.price}}</p>
+            <a href={{flaggedProduct.link}}>
+              <img src={{flaggedProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+        </div>
+
+        <div class="col-m6 right column2">
+          <p class="productDescript">Description: {{flaggedProduct.descript}}</p>
+          <form class="flagForm flex" ng-submit=flagProduct(flaggedProduct)>
+            <div>
+              <label>Why are you flagging this product?</label>
+              <input type="text" ng-model="flagComment" required>
+            </div>
+
+            <div class="spacer"></div>
+            <button type="submit" class="center btn">Flag this product</button>
+          </form>
+          <div>
+            <h5>Previous Flag Comments:</h5>
+            <div ng-repeat="comments in flagComments">
+              <p>{{comments}}</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>  <!-- end of row -->
+   </div> <!-- end of modal content -->
   </div> <!-- end of class modal -->

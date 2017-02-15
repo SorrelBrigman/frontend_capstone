@@ -14,6 +14,23 @@ app.controller('homeCtrl',  function($scope, products, getProductFactory, $route
     $location.url(`/details/${whichProduct}`);
 
   };
+
+  $scope.flagItem = (value)=> {
+    authFactory.getUser()
+    .then((e) => {
+      let whichProduct = value;
+      $location.url(`/flag/${whichProduct}`);
+    })
+    .catch(()=>{
+       //if they are not logged in
+        Materialize.toast("Please log in to flag an item!", 4000, 'round right'); // 4000 is the duration of the toast
+          //don't allow them to flag
+
+    });
+
+  };
+
+
   $scope.upVote = (product, votes) => {
     authFactory.getUser()
     .then((e) => {

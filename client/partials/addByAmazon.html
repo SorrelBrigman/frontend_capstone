@@ -1,0 +1,117 @@
+<!-- <button ng-click="getAmazon()">AMAZON!!!!</button> -->
+
+
+<div>
+  <form ng-submit="getAmazon()">
+    <div class="row">
+
+    <input class="col m" type="text" name="searchAmazon" placeholder="Search Amazon" ng-model="amazonSearchQuery.Keywords">
+
+    <div class="input-field col m6">
+      <select ng-model="amazonSearchQuery.searchIndex" class="browser-default" required>
+        <option value="" disabled selected>Choose your search category</option>
+        <option value="All">All</option>
+        <option value="ArtsAndCrafts">Arts And Crafts</option>
+        <option value="Fashion">Clothing</option>
+        <option value="Grocery">Food</option>
+        <option value="HomeGarden">Home</option>
+      </select>
+ <!--      <label>Category</label> -->
+      <button type="submit">Search!</button>
+    </div>
+    </div> <!-- end of row -->
+
+  </form>
+  <a href="#!/addproduct" class="waves-effect waves-light btn right"><i class="material-icons right">reorder</i>Add Product Manually</a>
+</div>
+
+<!-- product cards -->
+
+<div class="cardContainer">
+
+  <div class="row">
+      <div class="col s12 m6 l4 flexbox" ng-repeat="product in searchResults">
+      <!--   -->
+
+
+        <div class="card {{product.category}}  hoverable productCard">
+          <a class="left voteLink" ng-click=addProduct(product)>Add to Collection</a>
+          <p class="price">${{product.price}}</p>
+          <div class="card-image productImage valign-wrapper" ng-click="">
+          <!-- Modal Trigger -->
+              <!-- <a href="#" ng-click="openModule()"> -->
+              <img class="center" src={{product.image}}>
+              <!-- </a> -->
+          </div>
+          <div class="card-content cardInfo">
+            <span class="card-title">{{product.name}}</span>
+            <p> by
+              <a href={{product.productLink}}>{{product.company}}</a>
+              <!-- <a class="right voteLink" ng-click="upVote()""><i class="material-icons">thumb_up</i></a> -->
+            </p>
+          </div>
+<!--           <div class="card-action">
+            <a href="#"><i class="material-icons">flag</i>flag if not local</a>
+
+            <span href="#" class="right">{{}}<span ng-click=""> likes</span>
+          </div> -->
+        </div> <!-- end of card -->
+      </div> <!-- end of col -->
+    </div> <!-- end of row -->
+</div> <!-- end card container -->
+
+
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal detailProductCard flex">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div> <!-- end of modal footer -->
+    <div class="modal-content">
+
+      <div class="row detailmodal">
+
+        <div class="col-m6 column1">
+          <h5 class="left-align">{{thisProduct.name}}</h5>
+          <p class="left-align">by {{thisProduct.company}}</p>
+          <p class="right-align">${{thisProduct.price}}</p>
+            <a href={{thisProduct.link}}>
+              <img src={{thisProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+        </div>
+
+        <div class="col-m6 right column2">
+          <p class="productDescript">Description: {{thisProduct.descript}}</p>
+          <form class="amazonCheck" ng-submit=amazonAdd(thisProduct)>
+            <div>
+              <label>Enter {{thisProduct.company}}'s website:</label>
+              <input type="url" ng-model="web" required>
+            </div>
+            <p>
+                <input type="checkbox" id="companyUS" ng-model="uscompany"/>
+                <label for="companyUS">This product is made by an United States Company</label>
+              </p>
+              <p>
+                <input type="checkbox" id="assembledUS" ng-model="usassembled"/>
+                <label for="assembledUS">This product is assembled in the United States</label>
+              </p>
+              <p>
+                <input type="checkbox" id="manufacturedUS" ng-model="usmanufactured"/>
+                <label for="manufacturedUS">This product is manufactured in the United States</label>
+              </p>
+
+
+
+            <div class="spacer"></div>
+            <button type="submit" class="center btn">Add to Collection</button>
+          </form>
+          </div>
+        </div>
+      </div>  <!-- end of row -->
+   </div> <!-- end of modal content -->
+<!--     <div class=>
+
+<!--       <a href="#!" class="waves-effect right waves-green"><i class="material-icons">thumb_up</i>     </a> -->
+
+      <!-- <button class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </button>
+    </div> <!-- end of modal footer -->
+  </div> <!-- end of class modal -->
