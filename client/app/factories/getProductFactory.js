@@ -68,6 +68,27 @@ app.factory('getProductFactory', function($http){
         console.log("allProductLinks", allProductLinks);
         return allProductLinks;
       });
-    }, //end of getAllProducts()
+    }, //end of getAllProductLinks()
+    getAllProductASINs : () => {
+      //get all the products from firebase
+      return $http
+      .get('https://skb-capstone-frontend.firebaseio.com/products.json')
+      //parse the return from firebase, just returning the data object
+      .then((e)=>{
+        return e.data;
+      })
+      //turn the data object into an array
+      .then((e)=>{
+        let productList = e;
+        let allProductASIN = [];
+        for (var key in productList) {
+          let myProductASIN = productList[key].amazonUniqueId;
+          console.log("myProduct",myProductASIN );
+          allProductASIN.push(myProductASIN);
+        }
+        console.log("allProductASIN", allProductASIN);
+        return allProductASIN;
+      });
+    }, //end of getAllProductsASIN()
   };
 });

@@ -66,6 +66,9 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
         Materialize.toast("Please enter the item price as a number.", 4000, 'round right'); // 4000 is the duration of the toast
         return;
      }
+     //stamp the search date on the product object for later use
+        $scope.product.addDate = new Date();
+        console.log("date", $scope.product.addDate);
      //if it has passed all of these tests, add the product to the database
         console.log("logging product");
         console.log($scope.product);
