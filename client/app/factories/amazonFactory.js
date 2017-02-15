@@ -47,7 +47,8 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
               continue;
             }
             if(things.data[i].ItemAttributes[0].ListPrice) {
-              searchProduct.price = (things.data[i].ItemAttributes[0].ListPrice[0].Amount[0] / 100);
+              searchProduct.price = (things.data[i].ItemAttributes[0].ListPrice[0].Amount[0] / 100).toFixed(2);
+              //parseFloat(Math.round(num3 * 100) / 100).toFixed(2);
               console.log("price", searchProduct.price);
             } else {
                 continue;
