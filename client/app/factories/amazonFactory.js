@@ -1,4 +1,4 @@
-app.factory('amazonFactory', function($http){
+app.factory('amazonFactory', function($http, addProductFactory, $location){
   return {
     getAmazon : (value) => {
       console.log("value from Factory", value);
@@ -42,6 +42,37 @@ app.factory('amazonFactory', function($http){
 
 
       });//end of then
-    } //end of getAmazon()
+    },//end of getAmazon()
+    addAmazon : (value) => {
+      let newProduct = value;
+
+      if(newProduct.uscompany === undefined) {
+        newProduct.uscompany = false;
+      }
+      if (newProduct.usassembled === undefined) {
+        newProduct.usassembled = false;
+      }
+      if (newProduct.usmanufactured === undefined) {
+        newProduct.usmanufactured = false;
+      }
+       if (newProduct.uscompany || newProduct.usassembled || newProduct.usmanufactured) {
+        addProductFactory.addProductToFirebase(newProduct)
+        .then(()=>{
+        //thank them for entering a product
+        Materialize.toast("Thanks for sharing your find with us!", 4000, 'round right'); // 4000 is the duration of the toast
+        //wait 3 second, then return to homepage
+        setTimeout(()=> {
+          $location.url("/addProductThroughAmazon");
+          }, 3000);
+
+      });//end of then
+     } else {
+        //if not in our category, error message
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast("That product sounds awesome, but it doesn't fit in with our American made collection.", 4000, 'round right'); // 4000 is the duration of the toast
+      }
+      console.log("newProduct", newProduct);
+    }//end of addAmazon()
+
   }; //end of factory object
 });//end of factory
