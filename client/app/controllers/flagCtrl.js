@@ -1,4 +1,4 @@
-app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, authFactory, flagFactory){
+app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, authFactory, flagFactory, $location){
       $('.modal').modal();
   let currentProduct = $routeParams.productKey;
     console.log("specific", currentProduct);
@@ -46,7 +46,7 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
             //tell them they have already flagged
              // Materialize.toast(message, displayLength, className, completeCallback);
             Materialize.toast("You've already flagged this product!", 4000, 'round right'); // 4000 is the duration of the toast
-            //don't allow them to vote
+            //don't allow them to flag the product
             return;
           }//end of if
         }//end of for loop
@@ -56,8 +56,13 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
       //otherwise add their flag to the product
       flagFactory.flagProduct(user, thisProduct, comment)
         .then((e)=>{
+          //clear flag comment form
+          // $scope.flagComment = "";
           console.log("whatever cameback from flagging", e);
       //change flagged value to true
+      Materialize.toast("Thank you for bringing this to our attention.", 4000, 'round right'); // 4000 is the duration of the toast
+            //don't allow them to flag the product
+      $location.url("/");
       //count the number of flags
       //if flag # = 3, remove product
         })
