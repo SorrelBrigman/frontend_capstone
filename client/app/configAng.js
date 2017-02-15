@@ -62,6 +62,12 @@ app.config(($routeProvider)=> {
       //use the partial "addProduct"
       templateUrl: "partials/home.html"
     })
+    .when("/inreview", {
+      // use the add product ctrl
+      controller: "inReviewCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/inReview.html"
+    })
     .when("/flag/:productKey", {
       // use the flag ctrl
       controller: "flagCtrl",
