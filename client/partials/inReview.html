@@ -1,0 +1,99 @@
+<!-- banner -->
+
+
+<div class="welcomeBanner">
+  <!-- <img class="materialboxed" width="650" src="http://i.imgur.com/SUSCJXf.jpg"> -->
+  <h1 class="teal-text">Our collection is curated by YOU</h1>
+  <h5>The products below are waiting for 3 likes to be added to our collection. If you see something cool, like it.</h5>
+</div>
+
+<!-- navigation -->
+<!-- search -->
+ <nav class="boardSearch">
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" ng-model="productSearch">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+      <!--select which category of products to look at-->
+      <div class="nav-content">
+        <ul class="tabs">
+          <li class="tab"><a href="#!/inreview">All</a></li>
+          <li class="tab"><a href="#!/inReview/home">Home</a></li>
+          <li class="tab"><a href="#!/inReview/clothing">Clothing</a></li>
+          <li class="tab"><a class="active" href="#!/inReview/food">Food</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- product cards -->
+
+<div class="cardContainer">
+
+  <div class="row">
+      <div class="col s12 m6 l4 flexbox" ng-repeat="product in listAll | orderBy: '-countVotes'| filter: productSearch | filter: limitCat">
+      <!--   -->
+
+
+        <div class="card {{product.category}}  hoverable productCard">
+          <p class="price">${{product.price}}</p>
+          <div class="card-image productImage valign-wrapper" ng-click="openModule(product.key)">
+          <!-- Modal Trigger -->
+              <!-- <a href="#" ng-click="openModule()"> -->
+              <img class="center" ng-src={{product.image}}>
+              <!-- </a> -->
+          </div>
+          <div class="card-content cardInfo">
+            <span class="card-title">{{product.name}}</span>
+            <p> by
+              <a href={{product.compWeb}}>{{product.company}}</a>
+              <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a>
+            </p>
+          </div>
+          <div class="card-action">
+            <p ng-click="flagItem(product.key)"><i class="material-icons">flag</i>flag if not local</p>
+
+            <p ng-if="(product.flags)">This product has been flagged</p>
+
+            <span href="#" class="right">{{product.votesNeeded}}<span ng-click="upVote(product.key, product.votesArray)"> likes needed to add to collection</span>
+          </div>
+        </div> <!-- end of card -->
+      </div> <!-- end of col -->
+    </div> <!-- end of row -->
+</div> <!-- end card container -->
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal detailProductCard flex">
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div> <!-- end of modal footer -->
+    <div class="modal-content">
+
+      <div class="row detailmodal">
+        <div class="col-m6 column1">
+
+            <a href={{thisProduct.link}}>
+              <img ng-src={{thisProduct.image}} alt="image of product" class="detailProductImage">
+            </a>
+
+          <p class="productDescript">{{thisProduct.descript}}</p>
+        </div>
+        <div class="col-m6 right column2">
+          <h2 class="right-align">{{thisProduct.name}}</h2>
+          <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
+          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <p class="right-align">{{thisProduct.countVotes}} people like this</p>
+          <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <div class="spacer"></div>
+           <p class="flag teal-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
+           <p class="finePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
+        </div>
+      </div> <!-- end of row -->
+    </div> <!-- end of modal content -->
+
+  </div> <!-- end of class modal -->

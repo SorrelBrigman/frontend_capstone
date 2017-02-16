@@ -20,6 +20,7 @@ $(".button-collapse").sideNav({
 
 
 //logout function
+//in main js so available in all views
 logOut = () => {
   firebase
     .auth()

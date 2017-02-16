@@ -1,14 +1,18 @@
 app.controller('addProductCtrl', function($scope, addProductFactory, $location, getProductFactory) {
 
   let currentProducts;
+  //get all of the product links from all products in firebase
     getProductFactory.getAllProductLinks()
   .then((e)=>{
+    //assign the array of links to the var current Products
     currentProducts = e;
     //add materialize styles to select
      $('select').material_select();
-    console.log("currentProducts",currentProducts);
   });
 
+
+//a $scope object that can take the all the user inputted values
+    //as key value pairs
 
   $scope.product = {
     name: '',
@@ -28,7 +32,7 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
 
 
 
-
+//function to add products
  $scope.addProduct = ()=> {
 
     //test to make sure at least one american checkbox is true
@@ -66,6 +70,9 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
         Materialize.toast("Please enter the item price as a number.", 4000, 'round right'); // 4000 is the duration of the toast
         return;
      }
+     //stamp the search date on the product object for later use
+        $scope.product.addDate = new Date();
+        console.log("date", $scope.product.addDate);
      //if it has passed all of these tests, add the product to the database
         console.log("logging product");
         console.log($scope.product);
@@ -90,6 +97,8 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
 
   };
 
+
+//reset the form to blank
 const resetForm = () => {
 
         $scope.product.name = '';
