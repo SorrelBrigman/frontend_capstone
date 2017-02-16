@@ -66,7 +66,19 @@ app.config(($routeProvider)=> {
       // use the add product ctrl
       controller: "inReviewCtrl",
       //use the partial "addProduct"
-      templateUrl: "partials/inReview.html"
+      templateUrl: "partials/inReview.html",
+      resolve : {
+        //get products from the productFactory
+        products(getProductFactory) {
+          return getProductFactory.getAllProducts();
+        },
+        //get user from authFactory, relocate if not logged in
+        // user: (authFactory, $location) => {
+        //   return authFactory.getUser().catch(()=>{
+        //     $location.url("/login");
+        //   });
+        // }
+      }
     })
     .when("/flag/:productKey", {
       // use the flag ctrl
