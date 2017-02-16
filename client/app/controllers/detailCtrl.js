@@ -27,7 +27,10 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
     authFactory.getUser()
     //if the user is logged in
     .then((e) => {
+      //close the modal
+      $("#modal1").modal('close');
     //redirect them to the flag item page for that product
+
     $location.url(`/flag/${currentProduct}`);
     })//end of then
     //if the user is not logged in

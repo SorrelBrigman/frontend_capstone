@@ -30,6 +30,10 @@ app.controller('loginCtrl', function($scope, $location, $q){
     if (password === undefined) {
       Materialize.toast("A password is required", 4000);
     }
+    //if there is no email, remind user to input one
+    if (email === undefined) {
+      Materialize.toast("A valid email is required", 4000);
+    }
     //convert firebase.auth() into an angular promise
     return $q.resolve(firebase
       .auth()
@@ -42,6 +46,7 @@ app.controller('loginCtrl', function($scope, $location, $q){
       })//end of then
       //if there is an error
       .catch((e)=>{
+        console.log("error", e);
         //inform the user of the error
         // Materialize.toast(message, displayLength, className, completeCallback);
         Materialize.toast(e.message, 4000); // 4000 is the duration of the toast
@@ -50,8 +55,15 @@ app.controller('loginCtrl', function($scope, $location, $q){
 
   //if the user clicks the forgot password button
   $scope.forgot = () =>{
-    //take the email from the form
+    //take the email from the form, removing any extra spaces
     let email = $scope.email;
+    console.log(email);
+    if(email === undefined || email.trim() === "") {
+      //inform the user an email is needed
+        Materialize.toast(`Please enter a valid email`, 4000, 'round right');
+        return;
+
+    }
     //convert firebase.auth() into an angular promise
     return $q.resolve(firebase
       .auth()

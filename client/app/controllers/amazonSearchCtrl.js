@@ -1,4 +1,6 @@
 app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, amazonFactory){
+  //initialize tooltips
+  $('.tooltipped').tooltip({delay: 50});
 
   //an object to hold the search query info, with values currently blank
     //asside for the response group info which is constant for

@@ -84,6 +84,7 @@
           <form class="amazonCheck" ng-submit=amazonAdd(thisProduct)>
             <div>
               <label>Enter {{thisProduct.company}}'s website:</label>
+              <a class="tooltipped right" data-position="top" data-delay="50" data-tooltip="We required all our listing to have the company's website so our users can learn more about them.">What's this?</a>
               <input type="url" ng-model="web" required>
             </div>
             <p>
