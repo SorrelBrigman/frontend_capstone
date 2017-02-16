@@ -34,11 +34,13 @@ app.controller('addProductCtrl', function($scope, addProductFactory, $location, 
 
 //function to add products
  $scope.addProduct = ()=> {
-
+    let categoryVal = $("select.longFormCat").val();
+    $scope.product.category = categoryVal;
+     console.log("category", $scope.product.category);
     //test to make sure at least one american checkbox is true
     if ($scope.product.uscompany || $scope.product.usassembled || $scope.product.usmanufactured) {
      //if not in our category, error message
-     if($scope.product.category === "other"){
+     if($scope.product.category === "Other") {
         //alert the user product not in our wheelhouse
         // Materialize.toast(message, displayLength, className, completeCallback);
         Materialize.toast("That product sounds awesome, but it doesn't fit in with other items.", 4000, 'round right'); // 4000 is the duration of the toast
