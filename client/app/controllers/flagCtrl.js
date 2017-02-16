@@ -76,11 +76,17 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
               $location.url("/");
             });//end of innerthen
           }//end of if
+          else {
+        //refirect the user back to the homepage even if not at 3 flags
+              $location.url("/");
+          }//end of else
         })//end of outer then
         //if there is an issue with adding the flag
         .catch((error)=> {
           console.log("errror", error);
         });
+        //close the detail modal
+      $("#modal1").modal('close');
         //close the flag modal
       $("#modal3").modal('close');
     }); //end of then after authFactory
