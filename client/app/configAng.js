@@ -108,7 +108,23 @@ app.config(($routeProvider)=> {
       // use the login ctrl
       controller: "loginCtrl",
       //use the partial "logint"
-      templateUrl: "partials/login.html"
+      templateUrl: "partials/login.html",
+      //check to see if user logged in
+      resolve: {
+        user: (authFactory, $location) => {
+            return authFactory.getUser()
+            //if user
+            .then(()=>{
+              //go to home page
+              $location.url("/");
+            })
+            //if no user
+            .catch(()=>{
+              //continue to login page
+              $location.url("/login");
+            });
+          }
+      }
     })
     .when("/about", {
       // use the about ctrl
