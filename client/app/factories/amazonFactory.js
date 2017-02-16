@@ -1,14 +1,20 @@
 app.factory('amazonFactory', function($http, addProductFactory, $location, getProductFactory){
+  //beginning of factory object
   return {
+    //take search object from controller
     getAmazon : (value) => {
-      console.log("value from Factory", value);
+      //send request to client serve to utilize npm amazon factory,
+        //which will send request to amazon api
        return $http.post('/api/amazon',
         {params: value
                  })
+       //then take the return from the search
       .then((things) => {
-          console.log(things.data);
+          //create an empty array to house parsed search result objects
           let searchResults = [];
+          //loop through the search results
           for (var i = 0; i < things.data.length; i++) {
+            //create an empty object to house parsed search results
             let searchProduct = {};
             //set the amazon search category to a largerlocal search category
             if (value.searchIndex === "ArtsAndCrafts" || value.searchIndex === "HomeGarden"){
@@ -22,52 +28,49 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
             }
             //parse the product name
             searchProduct.name = things.data[i].ItemAttributes[0].Title[0];
-            console.log("title", searchProduct.name);
+
             //parse the company name
             if (things.data[i].ItemAttributes[0].Brand === undefined) {
+              //if the company name isn't give, don't add the product
               continue;
             } else {
               searchProduct.company = things.data[i].ItemAttributes[0].Brand[0];
-              console.log("company", searchProduct.company);
             }
             //parse the amazon purchase link
             searchProduct.link = things.data[i].DetailPageURL[0];
-            console.log("link", searchProduct.link);
             //parse the amazon unique product id
             searchProduct.amazonUniqueId = things.data[i].ASIN[0];
-            console.log("ASIN", searchProduct.amazonUniqueId);
             //stamp the search date on the product object for later use
             searchProduct.addDate = new Date();
-            console.log("date", searchProduct.addDate);
             //if the product has images, gather one
             if(things.data[i].ImageSets) {
               searchProduct.image = things.data[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
-              console.log("productImage", searchProduct.image);
             } else {
+              //if it does not have an image, don't add the product
               continue;
             }
+            //if the product has a listed price
             if(things.data[i].ItemAttributes[0].ListPrice) {
+              //parse the price and makesure it has 2 decimal values
               searchProduct.price = (things.data[i].ItemAttributes[0].ListPrice[0].Amount[0] / 100).toFixed(2);
-              //parseFloat(Math.round(num3 * 100) / 100).toFixed(2);
-              console.log("price", searchProduct.price);
+
             } else {
-                continue;
+              //if the product doesn't have a listed price, don't add it
+              continue;
             }
+            //create an empty string to house the description strings
             searchProduct.descript = "";
+            //loop through the array of descriptions, adding them all to the
+              //previously created empty strings
             for (var j = 0; j < things.data[i].ItemAttributes[0].Feature.length; j++) {
               searchProduct.descript += things.data[i].ItemAttributes[0].Feature[j] + ". ";
             }
-            console.log("description", searchProduct.descript);
-
-            // searchProduct.link = things.data[i].DetailPageURL[0];
-            // console.log("link", searchProduct.link);
-            // searchProduct.amazonUniqueId = things.data[i].ASIN[0];
-            // console.log("ASIN", searchProduct.amazonUniqueId);
-            // searchProduct.addDate = new Date();
-            // console.log("date", searchProduct.addDate);
+            //take the newly created search Product object with all of it's
+            //parsed info, and add it to the searchResults array
             searchResults.push(searchProduct);
           }
-          console.log("searchResults", searchResults);
+          //after all suitable search Products have been added to the searchResults array
+          //return the array
           return searchResults;
 
 
@@ -78,14 +81,19 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
         Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our custom entry below.", 5000, 'round right'); // 4000 is the duration of the toast
       });//end of catch
     },//end of getAmazon()
+
     addAmazon : (value) => {
+      //gather all the Amazon Unique identifiers (ASIN)
       getProductFactory.getAllProductASINs()
+      //then take the array of ASINS for all currently listed products in our collection
       .then((e)=>{
+        //assign them to a var
         let ASINs = e;
-        console.log("ASINs", ASINs);
+        //assign the newly added product to a var
         let newProduct = value;
         //test to see if that amazon product is already in our collection
         for (var i = 0; i < ASINs.length; i++) {
+          //testing by ASIN
           if (newProduct.amazonUniqueId === ASINs[i]) {
             //if so, don't allow it to be added, and tell the user
             Materialize.toast("That product is so awesome, it's already in our collection!", 4000, 'round right'); // 4000 is the duration of the toast
@@ -111,22 +119,21 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
          if (newProduct.uscompany || newProduct.usassembled || newProduct.usmanufactured) {
           //add the product
           addProductFactory.addProductToFirebase(newProduct)
+          //after a successful product add
           .then(()=>{
           //thank them for entering a product
           Materialize.toast("Thanks for sharing your find with us!", 4000, 'round right'); // 4000 is the duration of the toast
+          //close the modal
           $('#modal2').modal('close');
-          //wait 3 second, then return to homepage
-          // setTimeout(()=> {
-            $location.url("/");
-            // }, 3000);
+          //redirect them to the home page
+          $location.url("/");
 
         });//end of then
        } else {
           //if not any of the qualities are checked, error message
         // Materialize.toast(message, displayLength, className, completeCallback);
         Materialize.toast("That product sounds awesome, but it doesn't fit in with our American made collection.", 4000, 'round right'); // 4000 is the duration of the toast
-        }
-        console.log("newProduct", newProduct);
+        }//end of else
       }); //end of then from getFactory
     }//end of addAmazon()
 

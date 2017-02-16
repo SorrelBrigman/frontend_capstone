@@ -1,30 +1,31 @@
 app.factory('flagFactory', function($http) {
   return {
+    //take arguemnts from controller
     flagProduct : (user, flaggedProduct, comment) => {
+      //assign them to vars
+      //current user's uid:
       let thisUser = user.uid;
+      //current products firebase key:
       let thisProduct = flaggedProduct;
-      //require comment
       //take comment
       let flagComment = comment;
-      console.log("user", thisUser);
-      console.log("thisProduct", thisProduct);
-      console.log("flagComment", flagComment);
-      //add to flag object
+
+      //add user and comment to flag object
       let thisFlag = {
         user : thisUser,
         comment : flagComment
       };
-      console.log("thisFlag", thisFlag);
+
       //post to firebase
       return $http
       //an array of users, for each vote (limit by the users in the card)
         .post(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/flags/.json`, JSON.stringify(thisFlag));
-
-
     }, //end of flagProduct()
+
     getFlags : (product) => {
+      //take product object sent from controller
       let thisProduct = product;
-      console.log("thisProduct");
+
       //create an empty array to hold any flag comments
         let flagComments = [];
       //if there are any flags on this product
@@ -32,23 +33,24 @@ app.factory('flagFactory', function($http) {
         //parse the comments
         for(var key in thisProduct.flags) {
           let thisComment = thisProduct.flags[key].comment;
+          //push to flagcomment array
           flagComments.push(thisComment);
-        }
-      }
-      console.log("flagComments", flagComments);
+        }//end of for in loop
+      }//end of if statement
+      //return flagComments array
       return flagComments;
     }, //end of getFlags()
+
+    //take productkey
     deleteFlagProduct : (flaggedProduct) => {
+      //assign to var
       let thisProduct = flaggedProduct;
 
-      console.log("thisProduct", thisProduct);
-
-      //delete to firebase
+      //delete from firebase
       return $http
       //an array of users, for each vote (limit by the users in the card)
         .delete(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/.json`);
+    }//end of deleteFlagProduct()
 
-
-    }
   };//end of factory object
 });//end of factory

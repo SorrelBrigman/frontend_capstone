@@ -75,15 +75,15 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
       .then(()=>{
         //open the detail view of the product
         $scope.openModule(thisProduct);
-      });
-    })
+      });//end of inner then
+    })//end of outer then (checking for user)
     .catch(()=>{
         //if they are not logged in
         Materialize.toast("Please log in to vote!", 4000, 'round right'); // 4000 is the duration of the toast
           //don't allow them to vote
 
-      });
-    };
+      });//end of catch
+    };//end of upVote()
 
 
 

@@ -1,5 +1,6 @@
 app.controller('homeCtrl',  function($scope, products, getProductFactory, $routeParams, $location, authFactory, votingFactory){
 
+  //load in product from the resolve
   let allProducts = products;
 
   //sort products so only those with  3  or more votes show on this page
@@ -10,29 +11,28 @@ app.controller('homeCtrl',  function($scope, products, getProductFactory, $route
       productsInCollection.push(addThisProduct);
     }
   }
-
+//load products with 3 or more likes to the page
   $scope.listAll = productsInCollection;
 
-
-
-
-    // $scope.listAll =  products;
-
-
-
+  //can take category from url to sort products, utilizing route params
   $scope.limitCat = $routeParams.productCat;
 
-
+  //if user clicks on product, will open detail modal
   $scope.openModule = (value)=> {
-
+    //takes the product key, and uses that as a param to itentify which product
     let whichProduct = value;
+    //redirects the user to that detail page
     $location.url(`/details/${whichProduct}`);
-
   };
 
+  //if user clicks to flag an item
   $scope.flagItem = (value)=> {
+    //makes sure the user is logged in
     authFactory.getUser()
+    //if so
     .then((e) => {
+      //redirect user to the flag modal for that product, taking the productID
+      //and using it as a routeparam in next controller
       let whichProduct = value;
       $location.url(`/flag/${whichProduct}`);
     })
@@ -45,12 +45,17 @@ app.controller('homeCtrl',  function($scope, products, getProductFactory, $route
 
   };
 
-
+    //if user clicks to like/upvote a product
   $scope.upVote = (product, votes) => {
+    //check to see if the user is logged in
     authFactory.getUser()
+    //if so
     .then((e) => {
+      //take the product key
       let thisProduct = product;
+      //look at list of users who have already voted
       let whoVoted = votes;
+      //assign the user uid to a var
       let user = e;
       for (var i = 0; i < whoVoted.length; i++) {
         //if the user id matches one of the user.uid's who has already voted
@@ -64,16 +69,18 @@ app.controller('homeCtrl',  function($scope, products, getProductFactory, $route
       }
       //otherwise add their vote to the product
       votingFactory.upVote(user, thisProduct)
+      //then
       .then(()=>{
+        //open up the detail modal for the product
         $scope.openModule(thisProduct);
-      });
-    })
+      });//end of inner then
+    }) //end of outter then (checking for user)
     .catch(()=>{
         //if they are not logged in
         Materialize.toast("Please log in to vote!", 4000, 'round right'); // 4000 is the duration of the toast
           //don't allow them to vote
 
-      });
-    };
+      });//end of catch
+    };//end of upVote()
 
-});
+});// end of controller
