@@ -56,6 +56,17 @@ app.config(($routeProvider)=> {
         }
       }
     })
+    .when("/inReview/:productCat", {
+      // use the add product ctrl
+      controller: "inReviewCtrl",
+      //use the partial "addProduct"
+      templateUrl: "partials/inReview.html",
+      resolve : {
+        products(getProductFactory) {
+          return getProductFactory.getAllProducts();
+        }
+      }
+    })
     .when("/details/:productID", {
       // use the add product ctrl
       controller: "detailCtrl",

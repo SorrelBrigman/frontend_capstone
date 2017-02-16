@@ -1,4 +1,4 @@
-app.controller('inReviewCtrl', function($scope, products, $location, authFactory, votingFactory){
+app.controller('inReviewCtrl', function($scope, products, $location, authFactory, votingFactory, $routeParams){
 
 
   //get all products from the resolve in the Angconfig for this view
@@ -19,7 +19,7 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
   //add the products in Review array to the page
   $scope.listAll = productsInReview;
 
-
+  $scope.limitCat = $routeParams.productCat;
 
   //opens the modal into the detail view of the product
   $scope.openModule = (value)=> {
