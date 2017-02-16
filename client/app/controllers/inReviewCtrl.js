@@ -7,7 +7,7 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
   //sort products so only those with less than 3 votes show on this page
   let productsInReview = [];
   for (let i = 0; i < allProducts.length; i++){
-    if(allProducts[i].votesArray.length < 2) {
+    if(allProducts[i].votesArray.length <= 2) {
       let addThisProduct = allProducts[i];
       //convert the # of votes, into the number of votes needed
         // to add to the collection
