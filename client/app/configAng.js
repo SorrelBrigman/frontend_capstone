@@ -71,7 +71,12 @@ app.config(($routeProvider)=> {
       // use the add product ctrl
       controller: "detailCtrl",
       //use the partial "addProduct"
-      templateUrl: "partials/home.html"
+      templateUrl: "partials/home.html",
+      // resolve: {
+      //   user: (authFactory) => {
+      //     return authFactory.getUser();
+      //   }
+      // }
     })
     .when("/inreview", {
       // use the add product ctrl
@@ -83,13 +88,7 @@ app.config(($routeProvider)=> {
         products(getProductFactory) {
           return getProductFactory.getAllProducts();
         },
-        //get user from authFactory, relocate if not logged in
-        // user: (authFactory, $location) => {
-        //   return authFactory.getUser().catch(()=>{
-        //     $location.url("/login");
-        //   });
-        // }
-      }
+      }//end of resolve
     })
     .when("/flag/:productKey", {
       // use the flag ctrl

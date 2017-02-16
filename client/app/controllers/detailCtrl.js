@@ -1,7 +1,8 @@
 app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, authFactory, votingFactory, $location){
   //identify the product from the productID in the url
   let currentProduct = $routeParams.productID;
-
+  //begin with the assumption that the user has yet to like the product
+  $scope.alreadyLiked = false;
 
     //use the product ID to get that specific product from the
       //get product factory
@@ -10,6 +11,25 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
    .then((e)=>{
     //load the modal with that product information
     $scope.thisProduct =  e;
+    //check current user
+    authFactory.getUser()
+    //if the user is logged in
+    .then((e) => {
+      //get the array of who has voted for the product
+      let whoVoted = $scope.thisProduct.votesArray;
+      let user = e;
+      //compare the user to the list of users who have already voted
+      for (var i = 0; i < whoVoted.length; i++) {
+        //if the user id matches one of the user.uid's who has already voted
+        if(user.uid === whoVoted[i]) {
+          //set the alreadyLiked value to true
+              //this will update the detail card using ng-if
+          $scope.alreadyLiked = true;
+          break;
+        }
+      }
+    });
+    console.log("alreadyLiked", $scope.alreadyLiked);
     return $scope.thisProduct;
    })
    .then(()=>{
@@ -19,7 +39,6 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
       //open the modal
       $("#modal1").modal('open');
    });
-
 
    //if user clicks the flag item link
   $scope.flagItem = ()=> {
