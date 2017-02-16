@@ -37,7 +37,7 @@
         <div class="card {{product.category}}  hoverable productCard">
           <a class="left voteLink" ng-click=addProduct(product)>Add to Collection</a>
           <p class="price">${{product.price}}</p>
-          <div class="card-image productImage valign-wrapper" ng-click="">
+          <div class="card-image productImage valign-wrapper" ng-click=addProduct(product)>
           <!-- Modal Trigger -->
               <!-- <a href="#" ng-click="openModule()"> -->
               <img class="center" src={{product.image}}>
@@ -84,7 +84,7 @@
           <form class="amazonCheck" ng-submit=amazonAdd(thisProduct)>
             <div>
               <label>Enter {{thisProduct.company}}'s website:</label>
-              <a class="tooltipped right" data-position="top" data-delay="50" data-tooltip="We required all our listing to have the company's website so our users can learn more about them.">What's this?</a>
+              <a class="tooltipped right" data-position="top" data-delay="50" data-tooltip="We required all our listing to have the company's website so our users can learn more about the company.">What's this?</a>
               <input type="url" ng-model="web" required>
             </div>
             <p>

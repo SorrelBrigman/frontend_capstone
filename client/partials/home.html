@@ -67,7 +67,7 @@
 </div> <!-- end card container -->
 
 
-  <!-- Modal Structure -->
+  <!-- Detail Modal Structure -->
   <div id="modal1" class="modal detailProductCard flex">
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
@@ -88,7 +88,8 @@
           <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
           <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
           <p class="right-align numberOfVotes">{{thisProduct.countVotes}} people like this</p>
-          <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <a ng-if="(alreadyLiked !== true)" class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
+          <p ng-if="(alreadyLiked === true)" class="waves-effect right waves-green upVotes" ng-click="upVote()">You like this product</p>
           <div class="spacer"></div>
            <p class="flag teal-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
            <p class="finePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
