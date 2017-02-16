@@ -126,6 +126,28 @@ app.config(($routeProvider)=> {
           }
       }
     })
+    .when("/regUser", {
+      // use the login ctrl
+      controller: "loginCtrl",
+      //use the partial "regUser"
+      templateUrl: "partials/regUser.html",
+      //check to see if user logged in
+      resolve: {
+        user: (authFactory, $location) => {
+            return authFactory.getUser()
+            //if user
+            .then(()=>{
+              //go to home page
+              $location.url("/");
+            })
+            //if no user
+            .catch(()=>{
+              //continue to reg page
+              $location.url("/regUser");
+            });
+          }
+      }
+    })
     .when("/about", {
       // use the about ctrl
       controller: "aboutCtrl",
