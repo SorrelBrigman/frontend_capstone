@@ -23,8 +23,19 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
 
    //if user clicks the flag item link
   $scope.flagItem = ()=> {
+    //see if the user is logged in
+    authFactory.getUser()
+    //if the user is logged in
+    .then((e) => {
     //redirect them to the flag item page for that product
     $location.url(`/flag/${currentProduct}`);
+    })//end of then
+    //if the user is not logged in
+    .catch(()=>{
+      //if they are not logged in
+       Materialize.toast("Please log in to flag an item!", 4000, 'round right'); // 4000 is the duration of the toast
+      //don't allow them to flag
+    });
   };
 
 

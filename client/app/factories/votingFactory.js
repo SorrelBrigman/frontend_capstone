@@ -9,7 +9,11 @@ app.factory('votingFactory', function($http) {
       //post the vote to firebase
       return $http
       //an array of users, for each vote (limit by the users in the card)
-        .post(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/votes/.json`, JSON.stringify(myVote));
+        .post(`https://skb-capstone-frontend.firebaseio.com/products/${thisProduct}/votes/.json`, JSON.stringify(myVote))
+        .then(()=>{
+          //thank user for their vote
+           Materialize.toast("Thank you for supporting local!", 4000, 'round right'); // 4000 is the duration of the toast
+        });
     }//end upVote()
   };//end of the factory object
 });//end of the factory
