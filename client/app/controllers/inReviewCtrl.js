@@ -1,5 +1,11 @@
 app.controller('inReviewCtrl', function($scope, products, $location, authFactory, votingFactory, $routeParams){
 
+    //find any nav links with the active class
+  $('a.active').removeClass("active");
+    //remove active class
+    //apply active class to in Review nav link
+    $("a.inReview").addClass("active");
+
 
   //get all products from the resolve in the Angconfig for this view
   let allProducts = products;
@@ -20,6 +26,20 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
   $scope.listAll = productsInReview;
 
   $scope.limitCat = $routeParams.productCat;
+
+  console.log($scope.limitCat);
+  //find any Categorynav links with the active class
+  //remove active class
+  $('a.activeCat').removeClass("activeCat");
+  //if on the product category page
+  if($scope.limitCat) {
+    let currentCat = $scope.limitCat;
+    $(`a.${currentCat}`).addClass("activeCat");
+  } else {
+    $("a.allCat").addClass("activeCat");
+  }
+  // //apply active class to home nav link
+  // $("a.home").addClass("active");
 
   //opens the modal into the detail view of the product
   $scope.openModule = (value)=> {

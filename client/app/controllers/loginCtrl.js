@@ -1,4 +1,11 @@
 app.controller('loginCtrl', function($scope, $location, $q){
+      //find any nav links with the active class
+  $('a.active').removeClass("active");
+    //remove active class
+    //apply active class to in Review nav link
+    $("a.logInPage").addClass("active");
+
+
   //when user clicks login button
   $scope.logIn = () => {
     //take the values from the form

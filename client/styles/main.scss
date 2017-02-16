@@ -4,6 +4,17 @@ $friendlyLinkColor: #ffab40;
 $buyingLinkColor: teal;
 
 
+/*****Active Class****/
+
+.active {
+  border-bottom: 2px solid white;
+}
+
+.activeCat {
+  border-bottom: 2px solid;
+}
+
+
 /**flex attributes to keep footer at bottom **/
 body {
   display: flex;
