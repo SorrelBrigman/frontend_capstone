@@ -78,7 +78,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
       .catch((error)=> {
         //if an error
         //tell the user
-        Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our custom entry below.", 5000, 'round right'); // 4000 is the duration of the toast
+        Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our ADD PRODUCT MANUALLY feature.", 5000, 'round right'); // 4000 is the duration of the toast
       });//end of catch
     },//end of getAmazon()
 

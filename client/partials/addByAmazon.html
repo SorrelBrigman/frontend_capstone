@@ -4,8 +4,8 @@
 <div>
   <form ng-submit="getAmazon()">
     <div class="row">
-
-    <input class="col m" type="text" name="searchAmazon" placeholder="Search Amazon" ng-model="amazonSearchQuery.Keywords">
+    <label>Search for products on Amazon</label>
+    <input class="col m" type="text" name="searchAmazon" placeholder="Enter search here" ng-model="amazonSearchQuery.Keywords">
 
     <div class="input-field col m6">
       <select ng-model="amazonSearchQuery.searchIndex" class="browser-default" required>
