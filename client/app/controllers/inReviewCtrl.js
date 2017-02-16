@@ -1,4 +1,4 @@
-app.controller('inReviewCtrl', function($scope, products, $location){
+app.controller('inReviewCtrl', function($scope, products, $location, authFactory, votingFactory){
 
 
   //get all products from the resolve in the Angconfig for this view
@@ -10,6 +10,8 @@ app.controller('inReviewCtrl', function($scope, products, $location){
   for (let i = 0; i < allProducts.length; i++){
     if(allProducts[i].votesArray.length < 2) {
       let addThisProduct = allProducts[i];
+      addThisProduct.votesNeeded = (3 - addThisProduct.votesArray.length);
+      console.log("votesNeeded", addThisProduct.votesNeeded);
       productsInReview.push(addThisProduct);
     }
   }
@@ -22,6 +24,22 @@ app.controller('inReviewCtrl', function($scope, products, $location){
     $location.url(`/details/${whichProduct}`);
 
   };
+
+  $scope.flagItem = (value)=> {
+    authFactory.getUser()
+    .then((e) => {
+      let whichProduct = value;
+      $location.url(`/flag/${whichProduct}`);
+    })
+    .catch(()=>{
+       //if they are not logged in
+        Materialize.toast("Please log in to flag an item!", 4000, 'round right'); // 4000 is the duration of the toast
+          //don't allow them to flag
+
+    });
+
+  };
+
 
   $scope.upVote = (product, votes) => {
     authFactory.getUser()

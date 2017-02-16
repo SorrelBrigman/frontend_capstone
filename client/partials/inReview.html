@@ -59,7 +59,7 @@
 
             <p ng-if="(product.flags)">This product has been flagged</p>
 
-            <span href="#" class="right">{{product.countVotes}}<span ng-click="upVote(product.key, product.votesArray)"> likes</span>
+            <span href="#" class="right">{{product.votesNeeded}}<span ng-click="upVote(product.key, product.votesArray)"> likes needed to add to collection</span>
           </div>
         </div> <!-- end of card -->
       </div> <!-- end of col -->

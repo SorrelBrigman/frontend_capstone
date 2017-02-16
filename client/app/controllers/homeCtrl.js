@@ -1,8 +1,23 @@
 app.controller('homeCtrl',  function($scope, products, getProductFactory, $routeParams, $location, authFactory, votingFactory){
-   // getProductFactory.getAllProducts()
-   // .then((e)=>{
-    $scope.listAll =  products;
-   // });
+
+  let allProducts = products;
+
+  //sort products so only those with  3  or more votes show on this page
+  let productsInCollection = [];
+  for (let i = 0; i < allProducts.length; i++){
+    if(allProducts[i].votesArray.length > 2) {
+      let addThisProduct = allProducts[i];
+      productsInCollection.push(addThisProduct);
+    }
+  }
+
+  $scope.listAll = productsInCollection;
+
+
+
+
+    // $scope.listAll =  products;
+
 
 
   $scope.limitCat = $routeParams.productCat;
