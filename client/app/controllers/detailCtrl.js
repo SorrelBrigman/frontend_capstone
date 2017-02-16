@@ -29,7 +29,7 @@ app.controller('detailCtrl',  function($scope, getProductFactory, $routeParams, 
         }
       }
     });
-    console.log("alreadyLiked", $scope.alreadyLiked);
+
     return $scope.thisProduct;
    })
    .then(()=>{

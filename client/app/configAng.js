@@ -71,12 +71,7 @@ app.config(($routeProvider)=> {
       // use the add product ctrl
       controller: "detailCtrl",
       //use the partial "addProduct"
-      templateUrl: "partials/home.html",
-      // resolve: {
-      //   user: (authFactory) => {
-      //     return authFactory.getUser();
-      //   }
-      // }
+      templateUrl: "partials/home.html"
     })
     .when("/inreview", {
       // use the add product ctrl

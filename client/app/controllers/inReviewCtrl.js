@@ -27,7 +27,7 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
 
   $scope.limitCat = $routeParams.productCat;
 
-  console.log($scope.limitCat);
+
   //find any Categorynav links with the active class
   //remove active class
   $('a.activeCat').removeClass("activeCat");
