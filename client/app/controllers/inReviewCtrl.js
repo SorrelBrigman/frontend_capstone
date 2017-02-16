@@ -27,6 +27,20 @@ app.controller('inReviewCtrl', function($scope, products, $location, authFactory
 
   $scope.limitCat = $routeParams.productCat;
 
+  console.log($scope.limitCat);
+  //find any Categorynav links with the active class
+  //remove active class
+  $('a.activeCat').removeClass("activeCat");
+  //if on the product category page
+  if($scope.limitCat) {
+    let currentCat = $scope.limitCat;
+    $(`a.${currentCat}`).addClass("activeCat");
+  } else {
+    $("a.allCat").addClass("activeCat");
+  }
+  // //apply active class to home nav link
+  // $("a.home").addClass("active");
+
   //opens the modal into the detail view of the product
   $scope.openModule = (value)=> {
     //takes the product key

@@ -23,6 +23,22 @@ $("a.home").addClass("active");
 
   //can take category from url to sort products, utilizing route params
   $scope.limitCat = $routeParams.productCat;
+  console.log("limitCat", $scope.limitCat);
+
+  //find any Categorynav links with the active class
+  //remove active class
+  $('a.activeCat').removeClass("activeCat");
+  //if on the product category page
+  if($scope.limitCat) {
+    let currentCat = $scope.limitCat;
+    $(`a.${currentCat}`).addClass("activeCat");
+  } else {
+    $(`a.allCat`).addClass("activeCat");
+  }
+  //apply active class to home nav link
+  $("a.home").addClass("active");
+
+
 
   //if user clicks on product, will open detail modal
   $scope.openModule = (value)=> {
