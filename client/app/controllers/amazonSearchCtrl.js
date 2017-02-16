@@ -1,4 +1,12 @@
 app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, amazonFactory){
+
+  //find any nav links with the active class
+  $('a.active').removeClass("active");
+    //remove active class
+    //apply active class to in Review nav link
+    $("a.addProduct").addClass("active");
+
+
   //initialize tooltips
   $('.tooltipped').tooltip({delay: 50});
 

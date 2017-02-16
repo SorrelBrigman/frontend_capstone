@@ -1,5 +1,12 @@
 app.controller('homeCtrl',  function($scope, products, getProductFactory, $routeParams, $location, authFactory, votingFactory){
 
+  //find any nav links with the active class
+$('a.active').removeClass("active");
+//remove active class
+//apply active class to home nav link
+$("a.home").addClass("active");
+
+
   //load in product from the resolve
   let allProducts = products;
 

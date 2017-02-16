@@ -1,5 +1,11 @@
 app.controller('inReviewCtrl', function($scope, products, $location, authFactory, votingFactory, $routeParams){
 
+    //find any nav links with the active class
+  $('a.active').removeClass("active");
+    //remove active class
+    //apply active class to in Review nav link
+    $("a.inReview").addClass("active");
+
 
   //get all products from the resolve in the Angconfig for this view
   let allProducts = products;
