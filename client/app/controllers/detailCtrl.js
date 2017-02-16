@@ -40,6 +40,9 @@ $scope.flagItem = ()=> {
       }
       //otherwise add their vote to the product
       votingFactory.upVote(user, currentProduct);
+      let updatedVotes = ($scope.thisProduct.votesArray.length) + 1;
+      console.log("updatedVotes", updatedVotes);
+      $("p.numberOfVotes").text(`${updatedVotes} people like this`);
       $(".upVotes").hide();
     });
   };
