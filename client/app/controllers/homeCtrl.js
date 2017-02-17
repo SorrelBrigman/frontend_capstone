@@ -70,6 +70,7 @@ $("a.home").addClass("active");
 
     //if user clicks to like/upvote a product
   $scope.upVote = (product, votes) => {
+     $(".upVotes").hide();
     //check to see if the user is logged in
     authFactory.getUser()
     //if so
