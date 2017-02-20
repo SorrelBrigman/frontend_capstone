@@ -112,6 +112,7 @@ main {
   margin-top: -3%;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .productDescript {
@@ -136,8 +137,42 @@ main {
 }
 
 .flag {
-  font-size: 0.5em;
   align-self: flex-end;
+}
+
+.votes {
+  margin-top: -2.5em;
+}
+
+.itemFlag {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: red;
+}
+
+.cardBottomSection {
+  max-height: 91px;
+}
+
+/********fonts and texts on Product card***********/
+
+.flag {
+  font-size: 0.5em;
+}
+
+.finePrint {
+  font-size: 0.5em;
+}
+
+.productName {
+  max-height: 100px;
+  overflow: scroll;
+}
+
+.productNameCard {
+  max-height: 62px;
+  overflow: scroll;
 }
 
 /********LogIn Form***********/
@@ -159,7 +194,7 @@ main {
 
 /********
 form {
-  border: 2px solid;
+
   padding: 10em;
   border-radius: 7%;
 }
@@ -170,4 +205,17 @@ form {
 
 .amazonCheck {
   padding: 2rem;
+}
+
+.addManually {
+  margin: 1em 1em 1em;
+  display: block;
+}
+
+.submitSearch {
+  margin: auto;
+}
+
+.space {
+  display: block;
 }

@@ -7,7 +7,7 @@
     <label>Search for products on Amazon</label>
     <input class="col m" type="text" name="searchAmazon" placeholder="Enter search here" ng-model="amazonSearchQuery.Keywords">
 
-    <div class="input-field col m6">
+    <div class="input-field col m6 flex">
       <select ng-model="amazonSearchQuery.searchIndex" class="browser-default" required>
         <option value="" disabled selected>Choose your search category</option>
         <option value="All">All</option>
@@ -17,13 +17,16 @@
         <option value="HomeGarden">Home</option>
       </select>
  <!--      <label>Category</label> -->
-      <button type="submit">Search!</button>
+      <button class="right btn" type="submit">Search Amazon!</button>
     </div>
-    </div> <!-- end of row -->
 
   </form>
-  <a href="#!/addproduct" class="waves-effect waves-light btn right"><i class="material-icons right">reorder</i>Add Product Manually</a>
+    </div> <!-- end of row -->
 </div>
+<div class="space">
+  <a href="#!/addproduct" class="waves-effect waves-light btn addManually right"><i class="material-icons right">reorder</i>Add Product Manually</a>
+</div>
+  <div class="spacer"></div>
 
 <!-- product cards -->
 
@@ -44,7 +47,7 @@
               <!-- </a> -->
           </div>
           <div class="card-content cardInfo">
-            <span class="card-title">{{product.name}}</span>
+            <span class="card-title productNameCard">{{product.name}}</span>
             <p> by
               <a href={{product.productLink}}>{{product.company}}</a>
               <!-- <a class="right voteLink" ng-click="upVote()""><i class="material-icons">thumb_up</i></a> -->
