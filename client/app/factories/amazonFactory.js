@@ -41,7 +41,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
             //parse the amazon unique product id
             searchProduct.amazonUniqueId = things.data[i].ASIN[0];
             //stamp the search date on the product object for later use
-            searchProduct.addDate = new Date();
+            searchProduct.addDate = new Date().toDateString();
             //if the product has images, gather one
             if(things.data[i].ImageSets) {
               searchProduct.image = things.data[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];

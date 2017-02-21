@@ -3,7 +3,7 @@
 
 <div class="welcomeBanner">
   <!-- <img class="materialboxed" width="650" src="http://i.imgur.com/SUSCJXf.jpg"> -->
-  <h1 class="teal-text">Shop Local, Support Local</h1>
+  <h1 class="cyan-text">Shop Local, Support Local</h1>
   <h5>Local is bigger than you think.</h5>
 </div>
 
@@ -86,14 +86,14 @@
         </div>
         <div class="col-m6 right column2">
           <h4 class="right-align productName">{{thisProduct.name}}</h4>
-          <h5 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h5>
-          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <h5 class="right-align">by <a class="cyan-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h5>
+          <p class="right-align"><a class="cyan white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
           <p class="right-align numberOfVotes">{{thisProduct.countVotes}} people like this</p>
           <a ng-if="(alreadyLiked !== true)" class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
           <p ng-if="(alreadyLiked === true)" class="waves-effect right waves-green upVotes" ng-click="upVote()">You like this product</p>
           <div class="spacer"></div>
-           <p class="flag teal-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
-           <p class="finePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
+           <p class="flag cyan-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
+           <p class="finePrint right-align cardFinePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
         </div>
       </div> <!-- end of row -->
     </div> <!-- end of modal content -->
