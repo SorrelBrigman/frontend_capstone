@@ -1,7 +1,7 @@
 <!-- <button ng-click="getAmazon()">AMAZON!!!!</button> -->
 
 
-<div>
+<div class="container">
   <form ng-submit="getAmazon()">
     <div class="row">
     <label>Search for products on Amazon</label>
@@ -74,7 +74,7 @@
       <div class="row detailmodal">
 
         <div class="col-m6 column1">
-          <h5 class="left-align">{{thisProduct.name}}</h5>
+          <h5 class="left-align amazonCardName">{{thisProduct.name}}</h5>
           <p class="left-align">by {{thisProduct.company}}</p>
           <p class="right-align">${{thisProduct.price}}</p>
             <a href={{thisProduct.link}}>
@@ -83,12 +83,12 @@
         </div>
 
         <div class="col-m6 right column2">
-          <p class="productDescript">Description: {{thisProduct.descript}}</p>
+          <p class="productDescriptAmazon"><span class="description">Description: </span>{{thisProduct.descript}}</p>
           <form class="amazonCheck" ng-submit=amazonAdd(thisProduct)>
             <div>
               <label>Enter {{thisProduct.company}}'s website:</label>
               <a class="tooltipped right" data-position="top" data-delay="50" data-tooltip="We required all our listing to have the company's website so our users can learn more about the company.">What's this?</a>
-              <input type="url" ng-model="web" required>
+              <input type="url" ng-model="web" placeholder="http://www.example.com" required>
             </div>
             <p>
                 <input type="checkbox" id="companyUS" ng-model="uscompany"/>

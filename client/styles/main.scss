@@ -218,6 +218,7 @@ form {
 
 .amazonCheck {
   padding: 2rem;
+  line-height: 0.8;
 }
 
 .addManually {
@@ -231,4 +232,24 @@ form {
 
 .space {
   display: block;
+}
+
+
+/********Amazon Add Modal***********/
+
+.amazonCardName {
+  max-height: 100px;
+  overflow: scroll;
+}
+
+
+.productDescriptAmazon {
+  margin: 0 auto;
+  max-height: 105px;
+  overflow: scroll;
+  padding: 0 2rem;
+}
+
+.description {
+  font-weight: bold;
 }
