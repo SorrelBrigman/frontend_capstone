@@ -54,6 +54,7 @@ main {
 .productImage {
   height: 400px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 
@@ -71,6 +72,7 @@ main {
 
 .voteLink {
   color: $friendlyLinkColor;
+  cursor: pointer;
 }
 
 
@@ -93,6 +95,7 @@ main {
 
 .votes {
   text-align: right;
+  cursor: pointer;
 }
 
 
@@ -137,19 +140,26 @@ main {
 .detailPrice {
   font-size: 2em;
   padding: .5em;
+  cursor: pointer;
 }
 
 .upVotes {
   color: $friendlyLinkColor;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .flag {
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .votes {
   margin-top: -2.5em;
+}
+
+.flagItem {
+  cursor: pointer;
 }
 
 .itemFlag {
@@ -167,6 +177,7 @@ main {
 
 .flag {
   font-size: 0.5em;
+  cursor: pointer;
 }
 
 .finePrint {
@@ -181,11 +192,13 @@ main {
 .productName {
   max-height: 100px;
   overflow: scroll;
+  cursor: pointer;
 }
 
 .productNameCard {
   max-height: 62px;
   overflow: scroll;
+  cursor: pointer;
 }
 
 /********LogIn Form***********/
