@@ -109,6 +109,8 @@ app.config(($routeProvider)=> {
             return authFactory.getUser()
             //if user
             .then(()=>{
+              //use toast to tell them they are already logged in
+               Materialize.toast("You're already logged in", 2000, 'round right'); // 4000 is the duration of the toast
               //go to home page
               $location.url("/");
             })
