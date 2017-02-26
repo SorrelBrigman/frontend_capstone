@@ -12,7 +12,8 @@ module.exports = (grunt)=> {
         },
         dist: {
             files: {
-                'client/styles/main.css': 'client/styles/main.scss'
+                'client/styles/main.css': 'client/styles/main.scss',
+                'client/lib/materialize/dist/css/materialize.css' : 'client/lib/materialize/sass/materialize.scss'
             }
         }
     },

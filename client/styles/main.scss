@@ -4,6 +4,14 @@ $friendlyLinkColor: #ffab40;
 $buyingLinkColor: teal;
 
 
+html {
+    font-family: Raleway, Calibri, Trebuchet, sans-serif;
+}
+
+
+
+
+
 /*****Active Class****/
 
 .active {
@@ -46,6 +54,7 @@ main {
 .productImage {
   height: 400px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 
@@ -63,6 +72,7 @@ main {
 
 .voteLink {
   color: $friendlyLinkColor;
+  cursor: pointer;
 }
 
 
@@ -85,6 +95,7 @@ main {
 
 .votes {
   text-align: right;
+  cursor: pointer;
 }
 
 
@@ -112,6 +123,7 @@ main {
   margin-top: -3%;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .productDescript {
@@ -128,16 +140,65 @@ main {
 .detailPrice {
   font-size: 2em;
   padding: .5em;
+  cursor: pointer;
 }
 
 .upVotes {
   color: $friendlyLinkColor;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .flag {
-  font-size: 0.5em;
   align-self: flex-end;
+  cursor: pointer;
+}
+
+.votes {
+  margin-top: -2.5em;
+}
+
+.flagItem {
+  cursor: pointer;
+}
+
+.itemFlag {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: red;
+}
+
+.cardBottomSection {
+  max-height: 91px;
+}
+
+/********fonts and texts on Product card***********/
+
+.flag {
+  font-size: 0.5em;
+  cursor: pointer;
+}
+
+.finePrint {
+  font-size: 0.5em;
+  max-width: 80%;
+}
+
+.cardFinePrint {
+  align-self: flex-end;
+}
+
+.productName {
+  max-height: 100px;
+  overflow: scroll;
+  cursor: pointer;
+}
+
+.productNameCard {
+  max-height: 62px;
+  overflow: scroll;
+  cursor: pointer;
 }
 
 /********LogIn Form***********/
@@ -159,7 +220,7 @@ main {
 
 /********
 form {
-  border: 2px solid;
+
   padding: 10em;
   border-radius: 7%;
 }
@@ -170,4 +231,38 @@ form {
 
 .amazonCheck {
   padding: 2rem;
+  line-height: 0.8;
+}
+
+.addManually {
+  margin: 1em 1em 1em;
+  display: block;
+}
+
+.submitSearch {
+  margin: auto;
+}
+
+.space {
+  display: block;
+}
+
+
+/********Amazon Add Modal***********/
+
+.amazonCardName {
+  max-height: 100px;
+  overflow: scroll;
+}
+
+
+.productDescriptAmazon {
+  margin: 0 auto;
+  max-height: 105px;
+  overflow: scroll;
+  padding: 0 2rem;
+}
+
+.description {
+  font-weight: bold;
 }

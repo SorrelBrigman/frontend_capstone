@@ -23,7 +23,7 @@ $("a.home").addClass("active");
 
   //can take category from url to sort products, utilizing route params
   $scope.limitCat = $routeParams.productCat;
-  console.log("limitCat", $scope.limitCat);
+
 
   //find any Categorynav links with the active class
   //remove active class
@@ -70,6 +70,7 @@ $("a.home").addClass("active");
 
     //if user clicks to like/upvote a product
   $scope.upVote = (product, votes) => {
+     $(".upVotes").hide();
     //check to see if the user is logged in
     authFactory.getUser()
     //if so

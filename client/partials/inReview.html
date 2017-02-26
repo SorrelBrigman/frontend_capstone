@@ -3,7 +3,7 @@
 
 <div class="welcomeBanner">
   <!-- <img class="materialboxed" width="650" src="http://i.imgur.com/SUSCJXf.jpg"> -->
-  <h1 class="teal-text">Our collection is curated by YOU</h1>
+  <h1 class="cyan-text">Our collection is curated by YOU</h1>
   <h5>The products below are waiting for 3 likes to be added to our collection. If you see something cool, like it.</h5>
 </div>
 
@@ -22,7 +22,7 @@
       <div class="nav-content">
         <ul class="tabs">
           <li class="tab"><a class="allCat" href="#!/inreview">All</a></li>
-          <li class="tab"><a class="home" href="#!/inReview/home">Home</a></li>
+          <li class="tab"><a class="home" href="#!/inReview/home">Home Goods</a></li>
           <li class="tab"><a class="clothing" href="#!/inReview/clothing">Clothing</a></li>
           <li class="tab"><a class="active food" href="#!/inReview/food">Food</a></li>
         </ul>
@@ -48,18 +48,19 @@
               <!-- </a> -->
           </div>
           <div class="card-content cardInfo">
-            <span class="card-title">{{product.name}}</span>
+            <span class="card-title productNameCard right-align">{{product.name}}</span>
             <p> by
               <a href={{product.compWeb}}>{{product.company}}</a>
               <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a>
             </p>
           </div>
-          <div class="card-action">
-            <p ng-click="flagItem(product.key)"><i class="material-icons">flag</i>flag if not local</p>
+          <div class="card-action cardBottomSection">
+            <p class="itemFlag" ng-if="(product.flags)">This product has been flagged</p>
+            <p ng-click="flagItem(product.key)" class="flagItem"><i class="material-icons">flag</i>flag if not local</p>
 
-            <p ng-if="(product.flags)">This product has been flagged</p>
 
-            <span href="#" class="right">{{product.votesNeeded}}<span ng-click="upVote(product.key, product.votesArray)"> likes needed to add to collection</span>
+            <span href="#" class="right votes">{{product.votesNeeded}}<span ng-click="upVote(product.key, product.votesArray)"> likes needed</span>
+
           </div>
         </div> <!-- end of card -->
       </div> <!-- end of col -->
@@ -84,14 +85,14 @@
           <p class="productDescript">{{thisProduct.descript}}</p>
         </div>
         <div class="col-m6 right column2">
-          <h2 class="right-align">{{thisProduct.name}}</h2>
-          <h4 class="right-align">by <a class="teal-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h4>
-          <p class="right-align"><a class="teal white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
+          <h4 class="right-align productName">{{thisProduct.name}}</h4>
+          <h5 class="right-align">by <a class="cyan-text" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h5>
+          <p class="right-align"><a class="cyan white-text detailPrice" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
           <p class="right-align">{{thisProduct.countVotes}} people like this</p>
           <a class="waves-effect right waves-green upVotes" ng-click="upVote()">Give this product a <i class="material-icons">thumb_up</i>   </a>
           <div class="spacer"></div>
-           <p class="flag teal-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
-           <p class="finePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
+           <p class="flag cyan-text" ng-click="flagItem(thisProduct.key)"><i class="material-icons">flag</i> Report an issue with this product</p>
+           <p class="finePrint right-align cardFinePrint">Producted added to collection on {{thisProduct.addDate}}, price listed is based on add date.</p>
         </div>
       </div> <!-- end of row -->
     </div> <!-- end of modal content -->

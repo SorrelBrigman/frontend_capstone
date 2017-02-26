@@ -41,7 +41,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
             //parse the amazon unique product id
             searchProduct.amazonUniqueId = things.data[i].ASIN[0];
             //stamp the search date on the product object for later use
-            searchProduct.addDate = new Date();
+            searchProduct.addDate = new Date().toDateString();
             //if the product has images, gather one
             if(things.data[i].ImageSets) {
               searchProduct.image = things.data[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
@@ -78,7 +78,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
       .catch((error)=> {
         //if an error
         //tell the user
-        Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our custom entry below.", 5000, 'round right'); // 4000 is the duration of the toast
+        Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our ADD PRODUCT MANUALLY feature.", 5000, 'round right'); // 4000 is the duration of the toast
       });//end of catch
     },//end of getAmazon()
 

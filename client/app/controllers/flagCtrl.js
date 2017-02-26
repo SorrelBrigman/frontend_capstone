@@ -23,6 +23,7 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
 
 //if the user clicks the flag the product button
   $scope.flagProduct = (flaggedProduct) => {
+    $("p.flag").hide();
     //get the user id
     authFactory.getUser()
     .then((e) => {
@@ -65,7 +66,7 @@ app.controller('flagCtrl',  function($scope, getProductFactory, $routeParams, au
               //let the user know the product has been successfully flagged
           Materialize.toast("Thank you for bringing this to our attention.", 4000, 'round right'); // 4000 is the duration of the toast
           // add one to the previous number of  flags on that item
-          let currentFlagNumber = whoFlagged.length + 2;
+          let currentFlagNumber = whoFlagged.length + 1;
           //count the number of flags
           // if the new # of flags is greater than or equal to 3
           if(currentFlagNumber >= 3) {
