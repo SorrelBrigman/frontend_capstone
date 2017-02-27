@@ -7,7 +7,10 @@ The currated site concept was inspired by: https://canopy.co
 trello board link:
 https://trello.com/b/y9tmf0Zk/front-end-capstone
 
-wireframe mockup in personal yellow libray notebook.
+github repo link:
+https://github.com/SorrelBrigman/frontend_capstone
+
+wireframe mockup hand written. See images in Mockup images folder.
 
 Pages mocked up include:
 
@@ -23,9 +26,20 @@ About Us
 Expanded Project Card
 Add Product Form
 Login/Reg form
-User Galleries (boards)
-Flag Product view (BONUS)
-Review Product view (BONUS)
+Flag Product view
+Review Product view
+
+#technology used:
+* HTML, CSS, javascript
+* Angular 1.6.1
+* Angular-route 1.6.1
+* jQuery 3.1.1
+* Materialize 0.98.0
+* firebase 3.6.8
+* Amazon-product-api 0.4.3
+* node-sass 4.5.0
+* Grunt 1.0.1
+
 
 
 # Current Product features include:
@@ -66,3 +80,6 @@ Review Product view (BONUS)
 ## LogIn Features:
 * If user is already logged in and clicks the login menu tab, the user is redirected to the home page, and informed via Toast that they are already logged in
 * If a user is not logged in, they are unable to like, flag or add products.  They are informed of this via Toast if they try to perform these actions, and in the case of adding a product, are redirected to the login page
+
+
+Contributor: Sorrel Brigman
