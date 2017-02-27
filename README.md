@@ -82,4 +82,4 @@ Review Product view
 * If a user is not logged in, they are unable to like, flag or add products.  They are informed of this via Toast if they try to perform these actions, and in the case of adding a product, are redirected to the login page
 
 
-Contributor: Sorrel Brigman
+#Contributor: Sorrel Brigman  https://github.com/SorrelBrigman
