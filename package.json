@@ -4,7 +4,9 @@
   "description": "App concept, a curated site for shopping local/made in USA The currated site concept was inspired by: https://canopy.co",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,8 @@
   "homepage": "https://github.com/SorrelBrigman/frontend_capstone#readme",
   "dependencies": {
     "amazon-product-api": "^0.4.3",
+    "body-parser": "^1.16.1",
+    "bower": "^1.8.0",
     "express": "^4.14.1",
     "jslint": "^0.10.3",
     "matchdep": "^1.0.1",
