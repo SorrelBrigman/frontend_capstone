@@ -36,7 +36,3 @@ lib
 
 # Optional REPL history
 .node_repl_history
-
-# AWS Config
-config
-client/config
