@@ -1,4 +1,8 @@
+@import ../lib/
+
 /**Colors **/
+
+
 
 $friendlyLinkColor: #ffab40;
 $buyingLinkColor: teal;
@@ -266,3 +270,13 @@ form {
 .description {
   font-weight: bold;
 }
+
+/********Responsive changes for desktop version only***********/
+@media #{$large-and-up} {
+    // styles for large screens and up
+title{
+  padding-right: 2em;
+}
+
+
+  }
