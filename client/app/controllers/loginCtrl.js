@@ -39,8 +39,10 @@ app.controller('loginCtrl', function($scope, $location, $q){
       Materialize.toast("A password is required", 4000);
     }
     //if the password and passwordConfirm do not match, inform the user
+
     if (password !== confirmPassword) {
       Materialize.toast("Passwords don't match", 4000);
+      //and prevent registration
       return;
     }
     //if there is no email, remind user to input one
