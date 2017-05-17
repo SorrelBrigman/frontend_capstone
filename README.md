@@ -1,6 +1,7 @@
 # frontend_capstone
 App concept, a user curated site allowing users to showcase items made locally in their communities to a national audience of like minded shoppers.  Hopefully, this will help these products rise in national prominence.
 
+Assuming Heroku isn't down for maintainence, you can see the live version of the site here: https://larger-local.herokuapp.com/#!/
 
 The currated site concept was inspired by: https://canopy.co
 

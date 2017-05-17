@@ -9,6 +9,8 @@ app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, ama
 
   //initialize tooltips
   $('.tooltipped').tooltip({delay: 50});
+  //initialize select
+  $('select').material_select();
 
   //an object to hold the search query info, with values currently blank
     //asside for the response group info which is constant for

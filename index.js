@@ -20,26 +20,22 @@ var client = amazon.createClient({
 
 
 app.post('/api/amazon', (req, res, err) => {
-  console.log("amazon!!!");
-  console.log("req,body", req.body);
-  console.log("req.body.params.Keywords", req.body.params.Keywords);
+  // console.log("amazon!!!");
+  // console.log("req,body", req.body);
+  // console.log("req.body.params.Keywords", req.body.params.Keywords);
   client.itemSearch({
     // Keywords :"piñon coffee",
     // responseGroup : "ItemAttributes,Offers,Images",
     // searchIndex : "Grocery"
+    // responseGroup: 'ItemAttributes,Offers,Images'
     Keywords : req.body.params.Keywords,
     searchIndex: req.body.params.searchIndex,
     responseGroup: 'ItemAttributes,Offers,Images'
-    // director: 'Quentin Tarantino',
-    // actor: 'Samuel L. Jackson',
-    // searchIndex: 'DVD',
-    // audienceRating: 'R',
-    // responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results){
-    console.log("results from request", results);
+
     res.send(results);
   }).catch(function(err){
-    console.log(err);
+
     res.send(err);
   });
 })
