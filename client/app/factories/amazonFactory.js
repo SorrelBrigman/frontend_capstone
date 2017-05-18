@@ -3,6 +3,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
   return {
     //take search object from controller
     getAmazon : (value) => {
+      console.log("value from factory", value);
       //send request to client serve to utilize npm amazon factory,
         //which will send request to amazon api
        return $http.post('/api/amazon',
@@ -76,6 +77,7 @@ app.factory('amazonFactory', function($http, addProductFactory, $location, getPr
 
       }) //end of then
       .catch((error)=> {
+        console.log("error in factory", error)
         //if an error
         //tell the user
         Materialize.toast("Something went wrong.  Please check your spelling and category choice.  If the problem continues, please add your product with our ADD PRODUCT MANUALLY feature.", 5000, 'round right'); // 4000 is the duration of the toast

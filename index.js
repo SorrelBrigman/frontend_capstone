@@ -35,7 +35,7 @@ app.post('/api/amazon', (req, res, err) => {
     console.log("results", results)
     res.send(results);
   }).catch(function(err){
-
+    console.log("error", err.Message)
     res.send(err);
   });
 })

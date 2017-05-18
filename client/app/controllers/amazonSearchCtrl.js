@@ -21,12 +21,12 @@ app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, ama
     responseGroup: 'ItemAttributes,Offers,Images'
   };
 
-  console.log("amazon form", $scope.amazonSearchQuery)
+
 //function to get results from user search to the page
   $scope.getAmazon = () => {
     //convert search query into an object
     $scope.amazonSearchQuery = {
-      searchIndex: $scope.amazonSearchQuery.searchIndex,
+      searchIndex: "All",
       Keywords: $scope.amazonSearchQuery.Keywords,
       responseGroup: 'ItemAttributes,Offers,Images'
      };
