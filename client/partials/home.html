@@ -50,7 +50,7 @@
           <div class="card-content cardInfo">
             <span class="card-title productNameCard">{{product.name}}</span>
             <p> by
-              <a href={{product.compWeb}}>{{product.company}}</a>
+              <a target="_blank" href={{product.compWeb}}>{{product.company}}</a>
               <a class="right voteLink" ng-click="upVote(product.key, product.votesArray)""><i class="material-icons">thumb_up</i></a>
             </p>
           </div>
@@ -85,7 +85,7 @@
           <p class="productDescript">{{thisProduct.descript}}</p>
         </div>
         <div class="col-m6 right column2">
-          <h4 class="right-align productName">{{thisProduct.name}}</h4>
+          <h4 class="right-align productName"><a target="_blank" href={{thisProduct.link}}>{{thisProduct.name}}</a></h4>
           <h5 class="right-align">by <a class="cyan-text" target="_blank" href={{thisProduct.compWeb}}> {{thisProduct.company}}</a></h5>
           <p class="right-align"><a class="cyan white-text detailPrice" target="_blank" href={{thisProduct.link}}>${{thisProduct.price}}</a></p>
           <p class="right-align numberOfVotes">{{thisProduct.countVotes}} people like this</p>
