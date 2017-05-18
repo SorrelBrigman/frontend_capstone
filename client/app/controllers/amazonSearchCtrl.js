@@ -20,6 +20,8 @@ app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, ama
     Keywords: "",
     responseGroup: 'ItemAttributes,Offers,Images'
   };
+
+  console.log("amazon form", $scope.amazonSearchQuery)
 //function to get results from user search to the page
   $scope.getAmazon = () => {
     //convert search query into an object
@@ -29,8 +31,10 @@ app.controller('amazonSearchCtrl',function($scope, $http, addProductFactory, ama
       responseGroup: 'ItemAttributes,Offers,Images'
      };
      //send that object to the get amazon factor
+       console.log("amazon form once called", $scope.amazonSearchQuery)
      amazonFactory.getAmazon($scope.amazonSearchQuery)
       .then((e)=>{
+        console.log("searchResults", e)
         //get the returned researchs and load them to the page
         $scope.searchResults = e;
       });//end of then
