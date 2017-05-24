@@ -20,9 +20,9 @@ var client = amazon.createClient({
 
 
 app.post('/api/amazon', (req, res, err) => {
-  // console.log("amazon!!!");
-  // console.log("req,body", req.body);
-  // console.log("req.body.params.Keywords", req.body.params.Keywords);
+  console.log("amazon!!!");
+  console.log("req,body", req.body);
+  console.log("req.body.params.Keywords", req.body.params.Keywords);
   client.itemSearch({
     // Keywords :"piñon coffee",
     // responseGroup : "ItemAttributes,Offers,Images",
@@ -32,10 +32,10 @@ app.post('/api/amazon', (req, res, err) => {
     searchIndex: req.body.params.searchIndex,
     responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results){
-
+    console.log("results", results)
     res.send(results);
   }).catch(function(err){
-
+    console.log("error", err.Message)
     res.send(err);
   });
 })
