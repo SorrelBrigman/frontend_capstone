@@ -3,6 +3,8 @@ App concept, a user curated site allowing users to showcase items made locally i
 
 Assuming Heroku isn't down for maintainence, you can see the live version of the site here: https://larger-local.herokuapp.com/#!/
 
+Please note: The add by amazon feature is only functional if the connected Amazon affliate account is active.  This project was originally created for a school project, and the creator has chosen not to renew the affliate account upon its expiration at this time.
+
 The currated site concept was inspired by: https://canopy.co
 
 trello board link:
@@ -57,7 +59,7 @@ Review Product view
 
 
 ## User Added Products:
-* User able to add product using a search feature utilizing the API product API
+* User able to add product using a search feature utilizing the Amazon product API (if the associated Amazon Affliate account is currently active).
 * User also able to add products using a long form (being not all local products are available for sale through Amazon)
 
 ## User Use Features:
